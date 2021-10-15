@@ -128,29 +128,29 @@ prog2/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\prog2.dir\build.make CMakeFiles/prog2.dir/build
 .PHONY : prog2/fast
 
-Data.obj: Data.cpp.obj
-.PHONY : Data.obj
+Date.obj: Date.cpp.obj
+.PHONY : Date.obj
 
 # target to build an object file
-Data.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\prog2.dir\build.make CMakeFiles/prog2.dir/Data.cpp.obj
-.PHONY : Data.cpp.obj
+Date.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\prog2.dir\build.make CMakeFiles/prog2.dir/Date.cpp.obj
+.PHONY : Date.cpp.obj
 
-Data.i: Data.cpp.i
-.PHONY : Data.i
+Date.i: Date.cpp.i
+.PHONY : Date.i
 
 # target to preprocess a source file
-Data.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\prog2.dir\build.make CMakeFiles/prog2.dir/Data.cpp.i
-.PHONY : Data.cpp.i
+Date.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\prog2.dir\build.make CMakeFiles/prog2.dir/Date.cpp.i
+.PHONY : Date.cpp.i
 
-Data.s: Data.cpp.s
-.PHONY : Data.s
+Date.s: Date.cpp.s
+.PHONY : Date.s
 
 # target to generate assembly for a file
-Data.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\prog2.dir\build.make CMakeFiles/prog2.dir/Data.cpp.s
-.PHONY : Data.cpp.s
+Date.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\prog2.dir\build.make CMakeFiles/prog2.dir/Date.cpp.s
+.PHONY : Date.cpp.s
 
 main.obj: main.cpp.obj
 .PHONY : main.obj
@@ -176,29 +176,29 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\prog2.dir\build.make CMakeFiles/prog2.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-test.obj: test.cpp.obj
-.PHONY : test.obj
+tests.obj: tests.cpp.obj
+.PHONY : tests.obj
 
 # target to build an object file
-test.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\prog2.dir\build.make CMakeFiles/prog2.dir/test.cpp.obj
-.PHONY : test.cpp.obj
+tests.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\prog2.dir\build.make CMakeFiles/prog2.dir/tests.cpp.obj
+.PHONY : tests.cpp.obj
 
-test.i: test.cpp.i
-.PHONY : test.i
+tests.i: tests.cpp.i
+.PHONY : tests.i
 
 # target to preprocess a source file
-test.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\prog2.dir\build.make CMakeFiles/prog2.dir/test.cpp.i
-.PHONY : test.cpp.i
+tests.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\prog2.dir\build.make CMakeFiles/prog2.dir/tests.cpp.i
+.PHONY : tests.cpp.i
 
-test.s: test.cpp.s
-.PHONY : test.s
+tests.s: tests.cpp.s
+.PHONY : tests.s
 
 # target to generate assembly for a file
-test.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\prog2.dir\build.make CMakeFiles/prog2.dir/test.cpp.s
-.PHONY : test.cpp.s
+tests.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\prog2.dir\build.make CMakeFiles/prog2.dir/tests.cpp.s
+.PHONY : tests.cpp.s
 
 # Help Target
 help:
@@ -209,15 +209,15 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... prog2
-	@echo ... Data.obj
-	@echo ... Data.i
-	@echo ... Data.s
+	@echo ... Date.obj
+	@echo ... Date.i
+	@echo ... Date.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
-	@echo ... test.obj
-	@echo ... test.i
-	@echo ... test.s
+	@echo ... tests.obj
+	@echo ... tests.i
+	@echo ... tests.s
 .PHONY : help
 
 

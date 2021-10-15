@@ -80,16 +80,16 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Users/casde/CLionProjects/prog2/Data.cpp">
+		<Unit filename="C:/Users/casde/CLionProjects/prog2/Date.cpp">
 			<Option target="prog2"/>
 		</Unit>
-		<Unit filename="C:/Users/casde/CLionProjects/prog2/Data.h">
+		<Unit filename="C:/Users/casde/CLionProjects/prog2/Date.h">
 			<Option target="prog2"/>
 		</Unit>
 		<Unit filename="C:/Users/casde/CLionProjects/prog2/main.cpp">
 			<Option target="prog2"/>
 		</Unit>
-		<Unit filename="C:/Users/casde/CLionProjects/prog2/test.cpp">
+		<Unit filename="C:/Users/casde/CLionProjects/prog2/tests.cpp">
 			<Option target="prog2"/>
 		</Unit>
 		<Unit filename="C:/Users/casde/CLionProjects/prog2/CMakeLists.txt">

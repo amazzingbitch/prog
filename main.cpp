@@ -8,4 +8,3 @@ int main() {
     Catch::Session().run();
     return 0;
 }
-

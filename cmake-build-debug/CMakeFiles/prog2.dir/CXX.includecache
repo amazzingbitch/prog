@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/casde/CLionProjects/prog2/Data.cpp
-Data.h
-C:/Users/casde/CLionProjects/prog2/Data.h
+C:/Users/casde/CLionProjects/prog2/Date.cpp
+Date.h
+C:/Users/casde/CLionProjects/prog2/Date.h
 
-C:/Users/casde/CLionProjects/prog2/Data.h
+C:/Users/casde/CLionProjects/prog2/Date.h
 iostream
 -
 iomanip
@@ -616,13 +616,9 @@ iomanip
 cassert
 -
 
-C:/Users/casde/CLionProjects/prog2/main.cpp
-catch.hpp
-C:/Users/casde/CLionProjects/prog2/catch.hpp
-
-C:/Users/casde/CLionProjects/prog2/test.cpp
-Data.h
-C:/Users/casde/CLionProjects/prog2/Data.h
+C:/Users/casde/CLionProjects/prog2/tests.cpp
+Date.h
+C:/Users/casde/CLionProjects/prog2/Date.h
 catch.hpp
 C:/Users/casde/CLionProjects/prog2/catch.hpp
 cstring
