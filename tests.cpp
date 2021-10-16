@@ -65,13 +65,13 @@ TEST_CASE("DateTime class tests", "[Square]") {
     h = e - d;
     REQUIRE(strcmp(h.GetStr(), "10/5/669 18:30:3") == 0);
 
-    h = h - 4;
-    REQUIRE(strcmp(h.GetStr(), "10/5/669 14:30:3") == 0);
+    h = h - 48;
+    REQUIRE(strcmp(h.GetStr(), "8/5/669 18:30:3") == 0);
 
-    h = h + 4;
-    REQUIRE(strcmp(h.GetStr(), "10/5/669 18:30:3") == 0);
+    h = h + 4*24;
+    REQUIRE(strcmp(h.GetStr(), "12/5/669 18:30:3") == 0);
 
-    REQUIRE(strcmp("10/5/669 18:30:3", (char*) h) == 0);
+    REQUIRE(strcmp("12/5/669 18:30:3", (char*) h) == 0);
 
     Date aa(15, 3, 1984, 12, 4, 13);
     Date bb;
@@ -115,4 +115,55 @@ TEST_CASE("DateTime class tests", "[Square]") {
     binFileOut >> dd;
     REQUIRE(strcmp(cc.GetStr(), dd.GetStr()) == 0);
     binFileOut.close();
+
+    Date test;
+    try {
+        test.SetY(-1);
+    } catch (exception &ex) {
+        REQUIRE(strcmp(ex.what(), "Invalid year") == 0);
+    }
+
+    try {
+        test.SetMonth(14);
+    } catch (exception &ex) {
+        REQUIRE(strcmp(ex.what(), "Invalid month") == 0);
+    }
+
+    try {
+        test.SetDay(32);
+    } catch (exception &ex) {
+        REQUIRE(strcmp(ex.what(), "Invalid day") == 0);
+    }
+
+    try {
+        test.SetH(29);
+    } catch (exception &ex) {
+        REQUIRE(strcmp(ex.what(), "Invalid hour") == 0);
+    }
+
+    try {
+        test.SetMinute(70);
+    } catch (exception &ex) {
+        REQUIRE(strcmp(ex.what(), "Invalid minute") == 0);
+    }
+
+    try {
+        test.SetSecond(77);
+    } catch (exception &ex) {
+        REQUIRE(strcmp(ex.what(), "Invalid second") == 0);
+    }
+
+    Date test2(1, 1, 2008, 0, 0, 1);
+    try {
+        test2 = test - test2;
+    } catch (exception &ex) {
+        REQUIRE(strcmp(ex.what(), "Negative year") == 0);
+    }
+
+    Date test3(1, 1, 0, 0, 0, 0);
+    try {
+        test3 = test3 - 25;
+    } catch (exception &ex) {
+        REQUIRE(strcmp(ex.what(), "Negative year") == 0);
+    }
 }

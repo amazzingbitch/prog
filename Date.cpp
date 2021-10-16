@@ -89,28 +89,52 @@ char* Date::GetStr() { // геттер строки
     return cpStr;
 }
 void Date::SetDay(int day) {
-    this-> Day = day;
-    ToString();
+    if (CheckDay(day, this->Month, this->Year)) {
+        this-> Day = day;
+        ToString();
+    } else {
+        throw invalid_argument("Invalid day");
+    }
 }
 void Date::SetMonth(int month) {
-    this-> Month = month;
-    ToString();
+    if (month > 0 && month < 13) {
+        this-> Month = month;
+        ToString();
+    } else {
+        throw invalid_argument("Invalid month");
+    }
 }
 void Date::SetY(int year) {
-    this-> Year = year;
-    ToString();
+    if (year >= 0) {
+        this-> Year = year;
+        ToString();
+    } else {
+        throw invalid_argument("Invalid year");
+    }
 }
 void Date::SetH(int hour) {
-    this-> Hour = hour;
-    ToString();
+    if (hour < 24 && hour >= 0) {
+        this->Hour = hour;
+        ToString();
+    } else {
+        throw invalid_argument("Invalid hour");
+    }
 }
 void Date::SetMinute(int minute) {
-    this-> Minute = minute;
-    ToString();
+    if (minute < 60 && minute >= 0) {
+        this-> Minute = minute;
+        ToString();
+    } else {
+        throw invalid_argument("Invalid minute");
+    }
 }
 void Date::SetSecond(int second) {
-    this-> Second = second;
-    ToString();
+    if (second < 60 && second >= 0) {
+        this-> Second = second;
+        ToString();
+    } else {
+        throw invalid_argument("Invalid second");
+    }
 }
 bool Date::CheckData(int day, int month, int year)
 {
@@ -395,7 +419,12 @@ Date &Date::operator=(const Date &a) {
 }
 Date operator-(const Date &d1, const Date &d2) {
     Date temp;
-    temp.Year = d1.Year - d2.Year;
+    if (d1.Year < d2.Year) {
+        //temp.Year = 1;
+        throw invalid_argument("Negative year");
+    } else {
+        temp.Year = d1.Year - d2.Year;
+    }
     temp.Month = d1.Month;
     int raz = 0;
     if ((d1.Month - d2.Month) >= 1) {
@@ -444,6 +473,8 @@ Date operator+(const Date &d1, int hour) {
 Date operator-(const Date &d1, int hour) {
     Date temp(d1);
     for (int i = 0; i < hour; i++) {
+        if (temp.Year == 0 && temp.Month == 1 && temp.Day == 1 && temp.Hour == 0 && temp.Minute == 0 && temp.Second == 0)
+            throw invalid_argument("Negative year");
         temp.Minus('h');
     }
     return temp;
