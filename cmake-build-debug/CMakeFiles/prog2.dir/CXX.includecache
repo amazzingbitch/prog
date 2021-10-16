@@ -6,10 +6,6 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/casde/CLionProjects/prog2/Date.cpp
-Date.h
-C:/Users/casde/CLionProjects/prog2/Date.h
-
 C:/Users/casde/CLionProjects/prog2/Date.h
 iostream
 -
@@ -621,6 +617,10 @@ Date.h
 C:/Users/casde/CLionProjects/prog2/Date.h
 catch.hpp
 C:/Users/casde/CLionProjects/prog2/catch.hpp
+iostream
+-
+fstream
+-
 cstring
 -
 

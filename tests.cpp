@@ -4,6 +4,8 @@
 
 #include "Date.h"
 #include "catch.hpp"
+#include <iostream>
+#include <fstream>
 #include <cstring>
 
 TEST_CASE("DateTime class tests", "[Square]") {
@@ -70,4 +72,47 @@ TEST_CASE("DateTime class tests", "[Square]") {
     REQUIRE(strcmp(h.GetStr(), "10/5/669 18:30:3") == 0);
 
     REQUIRE(strcmp("10/5/669 18:30:3", (char*) h) == 0);
+
+    Date aa(15, 3, 1984, 12, 4, 13);
+    Date bb;
+
+    fstream file;
+    file.open("../text.txt", fstream::out);
+    if (!file.is_open()) {
+        std::cerr << "File open error" << "\n";
+        exit(1);
+    }
+    file << aa << endl;
+    file.close();
+
+    file.open("../text.txt", fstream::in);
+    if (!file.is_open()) {
+        std::cerr << "File open error" << "\n";
+        exit(1);
+    }
+    file >> bb;
+    REQUIRE(strcmp(aa.GetStr(), bb.GetStr()) == 0);
+    file.close();
+
+    Date cc(20, 3, 1984, 12, 20, 20);
+    Date dd;
+
+    ofstream binFileIn;
+    binFileIn.open("../binText.dat", ios::binary);
+    if (!binFileIn.is_open()) {
+        std::cerr << "File open error" << "\n";
+        exit(1);
+    }
+    binFileIn << cc << endl;
+    binFileIn.close();
+
+    ifstream binFileOut;
+    binFileOut.open("../binText.dat", ios::binary);
+    if (!binFileOut.is_open()) {
+        std::cerr << "File open error" << "\n";
+        exit(1);
+    }
+    binFileOut >> dd;
+    REQUIRE(strcmp(cc.GetStr(), dd.GetStr()) == 0);
+    binFileOut.close();
 }

@@ -450,3 +450,14 @@ Date operator-(const Date &d1, int hour) {
 }
 
 Date::operator char*() const { return this->str; }
+
+ostream &operator<<(ostream &os, const Date &d) {
+    os << d.Day << " " << d.Month << " " << d.Year << " " << d.Hour << " " << d.Minute << " " << d.Second;
+    return os;
+}
+
+istream &operator>>(istream &is, Date &d) {
+    is >> d.Day >> d.Month >> d.Year >> d.Hour >> d.Minute >> d.Second;
+    d.ToString();
+    return is;
+}
