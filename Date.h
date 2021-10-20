@@ -42,8 +42,8 @@ public:
     friend Date operator-(const Date &d1, int hour);
     Date &operator=(const Date &right);
     explicit operator char*() const;
-    friend ostream& operator << (ostream& os, const Date& d);
-    friend istream& operator >> (istream& os, Date& d);
+    friend ostream& operator << (ostream &os, Date &d);
+    friend istream& operator >> (istream &os, Date &d);
     friend fstream& operator << (fstream &os, Date &val);
     friend fstream& operator >> (fstream &is, Date &val);
 

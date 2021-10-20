@@ -1,5 +1,6 @@
 #include <cstring>
 #include <fstream>
+#include <stdexcept>
 #include "Date.h"
 
 Date::Date() {
@@ -469,16 +470,16 @@ Date operator-(const Date &d1, int hour) {
 
 Date::operator char*() const { return this->str; }
 
-ostream &operator<<(ostream &os, const Date &d) {
+ostream& operator << (ostream &os, Date &d) {
     os << d.Day << " " << d.Month << " " << d.Year << " " << d.Hour << " " << d.Minute << " " << d.Second;
     return os;
 }
 
-istream &operator>>(istream &is, Date &d) {
+istream& operator >> (istream &is, Date &d) {
     is >> d.Day >> d.Month >> d.Year >> d.Hour >> d.Minute >> d.Second;
     d.ToString(); return is;
 }
-fstream& operator << (fstream& os, Date& p) {
+fstream& operator << (fstream &os, Date &p) {
     os.write((char*)&p.Day, sizeof(int));
     os.write((char*)&p.Month, sizeof(int));
     os.write((char*)&p.Year, sizeof(int));
@@ -488,7 +489,7 @@ fstream& operator << (fstream& os, Date& p) {
     return os;
 }
 
-fstream& operator >> (fstream& in, Date& p) {
+fstream& operator >> (fstream &in, Date &p) {
     in.read((char*)&p.Day, sizeof(int));
     in.read((char*)&p.Month, sizeof(int));
     in.read((char*)&p.Year, sizeof(int));
