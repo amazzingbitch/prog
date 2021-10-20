@@ -1,12 +1,8 @@
-//
-// Created by casde on 15.10.2021.
-//
-
 #include "Date.h"
 #include "catch.hpp"
 #include <cstring>
 
-TEST_CASE("DateTime class tests", "[Square]") {
+TEST_CASE("DateTime class tests", "[LAB1]") {
     Date a(28, 2, 2020, 23, 5, 14);
     REQUIRE(strcmp(a.GetStr(), "28/2/2020 23:5:14") == 0);
     Date b;
@@ -52,10 +48,13 @@ TEST_CASE("DateTime class tests", "[Square]") {
     REQUIRE(strcmp(a.GetStr(), "15/3/1984 12:30:13") == 0);
     a.SetSecond(49);
     REQUIRE(strcmp(a.GetStr(), "15/3/1984 12:30:49") == 0);
+}
 
+TEST_CASE("DateTime class tests 2", "[LAB2]") {
     Date d(22, 8, 1337, 7, 33, 1);
     Date e(1, 2, 2007, 2, 3, 4);
     Date f;
+
     f = d + e;
     REQUIRE(strcmp(f.GetStr(), "23/10/3344 9:36:5") == 0);
 
@@ -69,5 +68,5 @@ TEST_CASE("DateTime class tests", "[Square]") {
     h = h + 4;
     REQUIRE(strcmp(h.GetStr(), "10/5/669 18:30:3") == 0);
 
-    REQUIRE(strcmp("10/5/669 18:30:3", (char*) h) == 0);
+    REQUIRE(strcmp((char*) h, "10/5/669 18:30:3") == 0);
 }

@@ -1,7 +1,3 @@
-//
-// Created by casde on 15.10.2021.
-//
-
 #ifndef PROG2_DATE_H
 #define PROG2_DATE_H
 #include <iostream>

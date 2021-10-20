@@ -1,36 +1,24 @@
-//
-// Created by casde on 15.10.2021.
-//
-
 #include "Date.h"
+#include <cstring>
 
 Date::Date() {
-    Day = 1, Month = 1, Year = 2007,
-    Hour = 0, Minute = 0, Second = 0;
-    this->str = nullptr;
-    sizeStr = 0;
+    Day = 1, Month = 1, Year = 2007, Hour = 0, Minute = 0, Second = 0; this->str = nullptr; sizeStr = 0;
     ToString();
 }
 Date::Date(int day, int month, int year, int hour, int minute, int second) {
     if (CheckTime(hour, minute, second) && CheckData(day, month, year)) {
         this-> Day = day, this-> Month = month, this-> Year = year;
         this-> Hour = hour, this-> Minute = minute, this-> Second = second;
-        this->str = nullptr;
-        sizeStr = 0;
-        ToString();
+        this->str = nullptr; sizeStr = 0; ToString();
     } else {
-        Day = 1, Month = 1, Year = 2007,
-        Hour = 0, Minute = 0, Second = 0;
-        this->str = nullptr;
-        sizeStr = 0;
-        ToString();
+        Day = 1, Month = 1, Year = 2007, Hour = 0, Minute = 0, Second = 0;
+        this->str = nullptr; sizeStr = 0; ToString();
     }
 }
 Date::Date(Date &a) {
     this-> Day = a.Day, this-> Month = a.Month, this-> Year = a.Year;
     this-> Hour = a.Hour, this-> Minute = a.Minute, this-> Second = a.Second;
-    this->str = nullptr; this->sizeStr = 0;
-    ToString();
+    this->str = nullptr; this->sizeStr = 0; ToString();
 }
 Date::Date(const Date &a) {
     this-> Day = a.Day, this-> Month = a.Month, this-> Year = a.Year;
@@ -82,11 +70,8 @@ int Date::countCalc(int num) {
     return len;
 }
 char* Date::GetStr() { // геттер строки
-    char* cpStr = new char[sizeStr];
-    for (int j = 0; j < sizeStr + 1; j++) {
-        cpStr[j] = str[j];
-    }
-    return cpStr;
+    char* copy = new char[sizeStr];
+    strcpy(copy, str); return copy;
 }
 void Date::SetDay(int day) {
     this-> Day = day;
@@ -448,5 +433,4 @@ Date operator-(const Date &d1, int hour) {
     }
     return temp;
 }
-
 Date::operator char*() const { return this->str; }
