@@ -1,29 +1,19 @@
-//
-// Created by casde on 15.10.2021.
-//
-
+#include <cstring>
+#include <fstream>
 #include "Date.h"
 
 Date::Date() {
-    Day = 1, Month = 1, Year = 2007,
-    Hour = 0, Minute = 0, Second = 0;
-    this->str = nullptr;
-    sizeStr = 0;
-    ToString();
+    Day = 1, Month = 1, Year = 2007, Hour = 0, Minute = 0, Second = 0;
+    this->str = nullptr; sizeStr = 0; ToString();
 }
 Date::Date(int day, int month, int year, int hour, int minute, int second) {
     if (CheckTime(hour, minute, second) && CheckData(day, month, year)) {
         this-> Day = day, this-> Month = month, this-> Year = year;
         this-> Hour = hour, this-> Minute = minute, this-> Second = second;
-        this->str = nullptr;
-        sizeStr = 0;
-        ToString();
+        this->str = nullptr; sizeStr = 0; ToString();
     } else {
-        Day = 1, Month = 1, Year = 2007,
-        Hour = 0, Minute = 0, Second = 0;
-        this->str = nullptr;
-        sizeStr = 0;
-        ToString();
+        Day = 1, Month = 1, Year = 2007, Hour = 0, Minute = 0, Second = 0;
+        this->str = nullptr; sizeStr = 0; ToString();
     }
 }
 Date::Date(Date &a) {
@@ -82,11 +72,8 @@ int Date::countCalc(int num) {
     return len;
 }
 char* Date::GetStr() { // геттер строки
-    char* cpStr = new char[sizeStr];
-    for (int j = 0; j < sizeStr + 1; j++) {
-        cpStr[j] = str[j];
-    }
-    return cpStr;
+    char* copy = new char [this->sizeStr];
+    strcpy(copy, str); return copy;
 }
 void Date::SetDay(int day) {
     if (CheckDay(day, this->Month, this->Year)) {
@@ -489,6 +476,24 @@ ostream &operator<<(ostream &os, const Date &d) {
 
 istream &operator>>(istream &is, Date &d) {
     is >> d.Day >> d.Month >> d.Year >> d.Hour >> d.Minute >> d.Second;
-    d.ToString();
-    return is;
+    d.ToString(); return is;
+}
+fstream& operator << (fstream& os, Date& p) {
+    os.write((char*)&p.Day, sizeof(int));
+    os.write((char*)&p.Month, sizeof(int));
+    os.write((char*)&p.Year, sizeof(int));
+    os.write((char*)&p.Hour, sizeof(int));
+    os.write((char*)&p.Minute, sizeof(int));
+    os.write((char*)&p.Second, sizeof(int));
+    return os;
+}
+
+fstream& operator >> (fstream& in, Date& p) {
+    in.read((char*)&p.Day, sizeof(int));
+    in.read((char*)&p.Month, sizeof(int));
+    in.read((char*)&p.Year, sizeof(int));
+    in.read((char*)&p.Hour, sizeof(int));
+    in.read((char*)&p.Minute, sizeof(int));
+    in.read((char*)&p.Second, sizeof(int));
+    p.ToString(); return in;
 }

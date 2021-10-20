@@ -8,7 +8,7 @@
 #include <fstream>
 #include <cstring>
 
-TEST_CASE("DateTime class tests", "[Square]") {
+TEST_CASE("DateTime class tests", "[LAB1]") {
     Date a(28, 2, 2020, 23, 5, 14);
     REQUIRE(strcmp(a.GetStr(), "28/2/2020 23:5:14") == 0);
     Date b;
@@ -54,10 +54,12 @@ TEST_CASE("DateTime class tests", "[Square]") {
     REQUIRE(strcmp(a.GetStr(), "15/3/1984 12:30:13") == 0);
     a.SetSecond(49);
     REQUIRE(strcmp(a.GetStr(), "15/3/1984 12:30:49") == 0);
-
+}
+TEST_CASE("DateTime class tests 2", "[LAB2]") {
     Date d(22, 8, 1337, 7, 33, 1);
     Date e(1, 2, 2007, 2, 3, 4);
     Date f;
+
     f = d + e;
     REQUIRE(strcmp(f.GetStr(), "23/10/3344 9:36:5") == 0);
 
@@ -68,11 +70,13 @@ TEST_CASE("DateTime class tests", "[Square]") {
     h = h - 48;
     REQUIRE(strcmp(h.GetStr(), "8/5/669 18:30:3") == 0);
 
-    h = h + 4*24;
+    h = h + 4 * 24;
     REQUIRE(strcmp(h.GetStr(), "12/5/669 18:30:3") == 0);
 
-    REQUIRE(strcmp("12/5/669 18:30:3", (char*) h) == 0);
+    REQUIRE(strcmp((char *) h, "12/5/669 18:30:3") == 0);
+}
 
+TEST_CASE("DateTime class tests 3", "[LAB3]") {
     Date aa(15, 3, 1984, 12, 4, 13);
     Date bb;
 
@@ -91,31 +95,33 @@ TEST_CASE("DateTime class tests", "[Square]") {
         exit(1);
     }
     file >> bb;
-    REQUIRE(strcmp(aa.GetStr(), bb.GetStr()) == 0);
     file.close();
+
+    REQUIRE(strcmp(aa.GetStr(), bb.GetStr()) == 0);
 
     Date cc(20, 3, 1984, 12, 20, 20);
     Date dd;
 
-    ofstream binFileIn;
-    binFileIn.open("../binText.dat", ios::binary);
-    if (!binFileIn.is_open()) {
-        std::cerr << "File open error" << "\n";
+    fstream bin("../binText.dat", ios::binary | ios::out);
+    if (!bin.is_open()) {
+        cerr << "File open error" << "\n";
         exit(1);
     }
-    binFileIn << cc << endl;
-    binFileIn.close();
+    bin << cc;
+    bin.close();
 
-    ifstream binFileOut;
-    binFileOut.open("../binText.dat", ios::binary);
-    if (!binFileOut.is_open()) {
-        std::cerr << "File open error" << "\n";
+    fstream bin2("../binText.dat", ios::binary | ios::in);
+    if (!bin2.is_open()) {
+        cerr << "File open error" << "\n";
         exit(1);
     }
-    binFileOut >> dd;
+    bin2 >> dd;
+    bin2.close();
+
     REQUIRE(strcmp(cc.GetStr(), dd.GetStr()) == 0);
-    binFileOut.close();
+}
 
+TEST_CASE("DateTime class tests 4", "[LAB6]") {
     Date test;
     try {
         test.SetY(-1);
