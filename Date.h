@@ -5,6 +5,7 @@
 #ifndef PROG2_DATE_H
 #define PROG2_DATE_H
 #include <iostream>
+#include <sstream>
 #include <iomanip>
 #include <string>
 #include <cstdlib>
@@ -35,6 +36,7 @@ public:
     void SecondMinus();
     static int countCalc(int num);
     void ToString();
+    void FromString();
     char* GetStr();
     friend Date operator+(const Date &d1, const Date &d2);
     friend Date operator-(const Date &d1, const Date &d2);
@@ -42,10 +44,10 @@ public:
     friend Date operator-(const Date &d1, int hour);
     Date &operator=(const Date &right);
     explicit operator char*() const;
-    friend ostream& operator << (ostream &os, Date &d);
-    friend istream& operator >> (istream &os, Date &d);
-    friend fstream& operator << (fstream &os, Date &val);
-    friend fstream& operator >> (fstream &is, Date &val);
+    friend ostream& operator << (ostream& os, const Date& d);
+    friend istream& operator >> (istream& os, Date& d);
+    friend ofstream& BinIn (ofstream &os, Date &val);
+    friend ifstream& BinOut (ifstream &is, Date &val);
 
 private:
     int Day, Month, Year, Hour, Minute, Second, sizeStr;

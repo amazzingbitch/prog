@@ -1,20 +1,31 @@
+//
+// Created by casde on 15.10.2021.
+//
 #include <cstring>
 #include <fstream>
-#include <stdexcept>
 #include "Date.h"
+#include <string.h>
 
 Date::Date() {
-    Day = 1, Month = 1, Year = 2007, Hour = 0, Minute = 0, Second = 0;
-    this->str = nullptr; sizeStr = 0; ToString();
+    Day = 1, Month = 1, Year = 2007,
+    Hour = 0, Minute = 0, Second = 0;
+    this->str = nullptr;
+    sizeStr = 0;
+    ToString();
 }
 Date::Date(int day, int month, int year, int hour, int minute, int second) {
     if (CheckTime(hour, minute, second) && CheckData(day, month, year)) {
         this-> Day = day, this-> Month = month, this-> Year = year;
         this-> Hour = hour, this-> Minute = minute, this-> Second = second;
-        this->str = nullptr; sizeStr = 0; ToString();
+        this->str = nullptr;
+        sizeStr = 0;
+        ToString();
     } else {
-        Day = 1, Month = 1, Year = 2007, Hour = 0, Minute = 0, Second = 0;
-        this->str = nullptr; sizeStr = 0; ToString();
+        Day = 1, Month = 1, Year = 2007,
+        Hour = 0, Minute = 0, Second = 0;
+        this->str = nullptr;
+        sizeStr = 0;
+        ToString();
     }
 }
 Date::Date(Date &a) {
@@ -50,7 +61,7 @@ void Date::ToString() {
             move++;
         }
         else if (i == 2) {
-            sprintf(str + move, "%c", ' ');
+            sprintf(str + move, "%c", '-');
             move++;
         }
         else if (i < 5) {
@@ -74,7 +85,8 @@ int Date::countCalc(int num) {
 }
 char* Date::GetStr() { // геттер строки
     char* copy = new char [this->sizeStr];
-    strcpy(copy, str); return copy;
+    strcpy(copy, str);
+    return copy;
 }
 void Date::SetDay(int day) {
     if (CheckDay(day, this->Month, this->Year)) {
@@ -470,16 +482,37 @@ Date operator-(const Date &d1, int hour) {
 
 Date::operator char*() const { return this->str; }
 
-ostream& operator << (ostream &os, Date &d) {
-    os << d.Day << " " << d.Month << " " << d.Year << " " << d.Hour << " " << d.Minute << " " << d.Second;
+ostream &operator<<(ostream &os, const Date &d) {
+    os << d.str;
+    // d.Day << " " << d.Month << " " << d.Year << " " << d.Hour << " " << d.Minute << " " << d.Second;
     return os;
 }
 
-istream& operator >> (istream &is, Date &d) {
-    is >> d.Day >> d.Month >> d.Year >> d.Hour >> d.Minute >> d.Second;
-    d.ToString(); return is;
+istream &operator>>(istream &is, Date &d) {
+    is >> d.str;
+    d.FromString();
+    /*stringstream ss;
+    ss << d.str;*/
+    is >> d.Day;
+    is.ignore(256, '/');
+    is >> d.Month;
+    is.ignore(256, '/');
+    is >> d.Year;
+    is.ignore(256, '-');
+    is >> d.Hour;
+    is.ignore(256, ':');
+    is >> d.Minute;
+    is.ignore(256, ':');
+    is >> d.Second;
+    //is.ignore(256, '\0');
+    //is >> d.Day >> d.Month >> d.Year >> d.Hour >> d.Minute >> d.Second;
+    //d.ToString();
+    return is;
 }
-fstream& operator << (fstream &os, Date &p) {
+void Date::FromString() {
+    this->sizeStr = strlen(str);
+}
+ofstream& BinIn (ofstream& os, Date& p) {
     os.write((char*)&p.Day, sizeof(int));
     os.write((char*)&p.Month, sizeof(int));
     os.write((char*)&p.Year, sizeof(int));
@@ -489,12 +522,13 @@ fstream& operator << (fstream &os, Date &p) {
     return os;
 }
 
-fstream& operator >> (fstream &in, Date &p) {
+ifstream& BinOut (ifstream& in, Date& p) {
     in.read((char*)&p.Day, sizeof(int));
     in.read((char*)&p.Month, sizeof(int));
     in.read((char*)&p.Year, sizeof(int));
     in.read((char*)&p.Hour, sizeof(int));
     in.read((char*)&p.Minute, sizeof(int));
     in.read((char*)&p.Second, sizeof(int));
-    p.ToString(); return in;
+    p.ToString();
+    return in;
 }
