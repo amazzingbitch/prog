@@ -6,18 +6,10 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/casde/CLionProjects/prog2/Date.cpp
-cstring
--
-fstream
--
-stdexcept
--
-Date.h
-C:/Users/casde/CLionProjects/prog2/Date.h
-
 C:/Users/casde/CLionProjects/prog2/Date.h
 iostream
+-
+sstream
 -
 iomanip
 -
