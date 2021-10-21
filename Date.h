@@ -1,15 +1,9 @@
-//
-// Created by casde on 15.10.2021.
-//
-
 #ifndef PROG2_DATE_H
 #define PROG2_DATE_H
 #include <iostream>
-#include <sstream>
 #include <iomanip>
-#include <string>
-#include <cstdlib>
-#include <cmath>
+#include <cstring>
+#include <fstream>
 using namespace std;
 class Date {
 public:
@@ -36,21 +30,20 @@ public:
     void SecondMinus();
     static int countCalc(int num);
     void ToString();
-    void FromString();
     char* GetStr();
     friend Date operator+(const Date &d1, const Date &d2);
     friend Date operator-(const Date &d1, const Date &d2);
     friend Date operator+(const Date &d1, int hour);
     friend Date operator-(const Date &d1, int hour);
     Date &operator=(const Date &right);
-    explicit operator char*() const;
+    explicit operator char *() const;
     friend ostream& operator << (ostream& os, const Date& d);
     friend istream& operator >> (istream& os, Date& d);
     friend ofstream& BinIn (ofstream &os, Date &val);
     friend ifstream& BinOut (ifstream &is, Date &val);
 
 private:
-    int Day, Month, Year, Hour, Minute, Second, sizeStr;
+    int Day, Month, Year, Hour, Minute, Second;
     char* str;
     static bool CheckData(int day, int month, int year);
     static bool CheckTime(int hour, int minute, int second);
