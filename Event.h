@@ -1,11 +1,12 @@
 //
 // Created by casde on 01.11.2021.
 //
-
 #ifndef DATE_CPP_EVENT_H
 #define DATE_CPP_EVENT_H
 
 #include "Date.h"
+#include <cstring>
+#include <fstream>
 
 class Event : public Date {
 public:
@@ -14,9 +15,9 @@ public:
     Event(Event &a);
     ~Event();
     void ToStringEvent();
-    void SetEvent (const char* name);
+    void SetEvent(const char* name);
     char* GetEvent();
-    void copyName ();
+    void copyName();
 
 protected:
     char* event;

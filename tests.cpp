@@ -138,19 +138,17 @@ TEST_CASE("DateTime class tests 3", "[LAB3]") {
 TEST_CASE("DateTime class tests 4", "[LAB4]") {
     Event a;
     REQUIRE(strcmp(a.GetStr(), "1/1/2007-0:0:0") == 0);
-    const char* h = "birthday";
-    a.SetEvent(h);
-    /*REQUIRE(strcmp(a.GetEvent(), "1/1/2007-0:0:0 birthday") == 0);
+    a.SetEvent("birthday");
+    REQUIRE(strcmp(a.GetEvent(), "1/1/2007-0:0:0 birthday") == 0);
 
     Event n(28, 2, 2020, 23, 5, 14);
     REQUIRE(strcmp(n.GetStr(), "28/2/2020-23:5:14") == 0);
-    const char* f = "funeral";
-    n.SetEvent(f);
+    n.SetEvent("funeral");
     REQUIRE(strcmp(n.GetEvent(), "28/2/2020-23:5:14 funeral") == 0);
 
     Event c(n);
     REQUIRE(strcmp(n.GetStr(), c.GetStr()) == 0);
-    REQUIRE(strcmp(n.GetEvent(), c.GetEvent()) == 0);*/
+    REQUIRE(strcmp(n.GetEvent(), c.GetEvent()) == 0);
 }
 TEST_CASE("DateTime class tests 6", "[LAB6]") {
     Date test;
@@ -202,5 +200,12 @@ TEST_CASE("DateTime class tests 6", "[LAB6]") {
         test3 = test3 - 25;
     } catch (exception &ex) {
         REQUIRE(strcmp(ex.what(), "Negative year") == 0);
+    }
+
+    Event test4;
+    try {
+        test4.SetEvent("sweet wedding of my lovely cousin");
+    } catch (exception &ex) {
+        REQUIRE(strcmp(ex.what(), "Invalid length of event name") == 0);
     }
 }
