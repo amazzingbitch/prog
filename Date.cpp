@@ -84,7 +84,7 @@ int Date::countCalc(int num) {
     return len;
 }
 char* Date::GetStr() { // геттер строки
-    char* copy = new char [this->sizeStr];
+    char* copy = new char [this->sizeStr+1];
     strcpy(copy, str);
     return copy;
 }
@@ -480,7 +480,7 @@ Date operator-(const Date &d1, int hour) {
     return temp;
 }
 
-Date::operator char*() const { return this->str; }
+Date::operator char*() { return this->GetStr(); }
 
 ostream &operator<<(ostream &os, const Date &d) {
     os << d.str;

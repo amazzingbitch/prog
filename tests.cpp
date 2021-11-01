@@ -106,7 +106,7 @@ TEST_CASE("DateTime class tests 3", "[LAB3]") {
     }
     BinIn(bin, cc);
     bin.close();
-    ifstream bin2("..\\binText.dat", ios::binary | ios::in);
+    ifstream bin2("..\\binText.dat", ios::binary);
     if (!bin2.is_open()) {
         cerr << "File open error";
         exit(1);

@@ -43,7 +43,7 @@ public:
     friend Date operator+(const Date &d1, int hour);
     friend Date operator-(const Date &d1, int hour);
     Date &operator=(const Date &right);
-    explicit operator char*() const;
+    explicit operator char*();
     friend ostream& operator << (ostream& os, const Date& d);
     friend istream& operator >> (istream& os, Date& d);
     friend ofstream& BinIn (ofstream &os, Date &val);
