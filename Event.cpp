@@ -13,24 +13,16 @@ Event::Event(int day, int month, int year, int hour, int minute, int second) {
     } else {
         Day = 1, Month = 1, Year = 2007, Hour = 0, Minute = 0, Second = 0;
         str = nullptr; eventName = nullptr; event = nullptr;
-        ToStringEvent(); copyName();
+        ToStringEvent();
     }
 }
 Event::Event(Event &a) {
     Day = a.Day, Month = a.Month, Year = a.Year; Hour = a.Hour, Minute = a.Minute,
     Second = a.Second, eventName = a.eventName; str = nullptr; event = nullptr;
-    ToStringEvent(); copyName();
+    ToStringEvent();
 }
 Event::~Event() {
     delete[]event; delete[]eventName; delete[]str;
-}
-void Event::copyName() {
-    if (eventName != nullptr) {
-        sprintf(event + strlen(str), "%c", ' '); int j = 0;
-        for (int i = (int)strlen(str) + 1; i < strlen(eventName) + strlen(str) + 2; i++) {
-            event[i] = eventName[j]; j++;
-        }
-    }
 }
 void Event::ToStringEvent() {
     int size[6], sum = 0;
@@ -56,13 +48,19 @@ void Event::ToStringEvent() {
             move++;
         }
     }
+    if (eventName != nullptr) {
+        sprintf(event + strlen(str), "%c", ' '); int j = 0;
+        for (int i = (int)strlen(str) + 1; i < strlen(eventName) + strlen(str) + 2; i++) {
+            event[i] = eventName[j]; j++;
+        }
+    }
 }
 void Event::SetEvent(const char* name) {
     if (strlen(name) > 20) {
         throw invalid_argument("Invalid length of event name");
     } else {
         delete[]eventName; eventName = new char [strlen(name)+1];
-        strcpy(eventName, name); ToStringEvent(); copyName();
+        strcpy(eventName, name); ToStringEvent();
     }
 }
 char* Event::GetEvent() {

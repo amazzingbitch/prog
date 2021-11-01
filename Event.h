@@ -17,7 +17,6 @@ public:
     void ToStringEvent();
     void SetEvent(const char* name);
     char* GetEvent();
-    void copyName();
 
 protected:
     char* event;
