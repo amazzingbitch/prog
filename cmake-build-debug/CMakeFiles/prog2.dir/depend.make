@@ -4,10 +4,15 @@
 CMakeFiles/prog2.dir/Date.cpp.obj: \
  ../Date.cpp \
  ../Date.h
+CMakeFiles/prog2.dir/Event.cpp.obj: \
+ ../Date.h \
+ ../Event.cpp \
+ ../Event.h
 CMakeFiles/prog2.dir/main.cpp.obj: \
  ../catch.hpp \
  ../main.cpp
 CMakeFiles/prog2.dir/tests.cpp.obj: \
  ../Date.h \
+ ../Event.h \
  ../catch.hpp \
  ../tests.cpp

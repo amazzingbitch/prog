@@ -152,6 +152,54 @@ Date.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\prog2.dir\build.make CMakeFiles/prog2.dir/Date.cpp.s
 .PHONY : Date.cpp.s
 
+Event.obj: Event.cpp.obj
+.PHONY : Event.obj
+
+# target to build an object file
+Event.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\prog2.dir\build.make CMakeFiles/prog2.dir/Event.cpp.obj
+.PHONY : Event.cpp.obj
+
+Event.i: Event.cpp.i
+.PHONY : Event.i
+
+# target to preprocess a source file
+Event.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\prog2.dir\build.make CMakeFiles/prog2.dir/Event.cpp.i
+.PHONY : Event.cpp.i
+
+Event.s: Event.cpp.s
+.PHONY : Event.s
+
+# target to generate assembly for a file
+Event.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\prog2.dir\build.make CMakeFiles/prog2.dir/Event.cpp.s
+.PHONY : Event.cpp.s
+
+TimeString.obj: TimeString.cpp.obj
+.PHONY : TimeString.obj
+
+# target to build an object file
+TimeString.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\prog2.dir\build.make CMakeFiles/prog2.dir/TimeString.cpp.obj
+.PHONY : TimeString.cpp.obj
+
+TimeString.i: TimeString.cpp.i
+.PHONY : TimeString.i
+
+# target to preprocess a source file
+TimeString.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\prog2.dir\build.make CMakeFiles/prog2.dir/TimeString.cpp.i
+.PHONY : TimeString.cpp.i
+
+TimeString.s: TimeString.cpp.s
+.PHONY : TimeString.s
+
+# target to generate assembly for a file
+TimeString.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\prog2.dir\build.make CMakeFiles/prog2.dir/TimeString.cpp.s
+.PHONY : TimeString.cpp.s
+
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
@@ -212,6 +260,12 @@ help:
 	@echo ... Date.obj
 	@echo ... Date.i
 	@echo ... Date.s
+	@echo ... Event.obj
+	@echo ... Event.i
+	@echo ... Event.s
+	@echo ... TimeString.obj
+	@echo ... TimeString.i
+	@echo ... TimeString.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

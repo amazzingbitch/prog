@@ -4,10 +4,15 @@
 CMakeFiles/prog2.dir/Date.cpp.obj
  C:/Users/casde/CLionProjects/prog2/Date.cpp
  C:/Users/casde/CLionProjects/prog2/Date.h
+CMakeFiles/prog2.dir/Event.cpp.obj
+ C:/Users/casde/CLionProjects/prog2/Date.h
+ C:/Users/casde/CLionProjects/prog2/Event.cpp
+ C:/Users/casde/CLionProjects/prog2/Event.h
 CMakeFiles/prog2.dir/main.cpp.obj
  C:/Users/casde/CLionProjects/prog2/catch.hpp
  C:/Users/casde/CLionProjects/prog2/main.cpp
 CMakeFiles/prog2.dir/tests.cpp.obj
  C:/Users/casde/CLionProjects/prog2/Date.h
+ C:/Users/casde/CLionProjects/prog2/Event.h
  C:/Users/casde/CLionProjects/prog2/catch.hpp
  C:/Users/casde/CLionProjects/prog2/tests.cpp
