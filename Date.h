@@ -36,7 +36,6 @@ public:
     void SecondMinus();
     static int countCalc(int num);
     void ToString();
-    void FromString();
     char* GetStr();
     friend Date operator+(const Date &d1, const Date &d2);
     friend Date operator-(const Date &d1, const Date &d2);
@@ -49,8 +48,8 @@ public:
     friend ofstream& BinIn (ofstream &os, Date &val);
     friend ifstream& BinOut (ifstream &is, Date &val);
 
-private:
-    int Day, Month, Year, Hour, Minute, Second, sizeStr;
+protected:
+    int Day, Month, Year, Hour, Minute, Second;
     char* str;
     static bool CheckData(int day, int month, int year);
     static bool CheckTime(int hour, int minute, int second);

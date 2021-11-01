@@ -12,12 +12,15 @@ public:
     Event();
     Event(int day, int month, int year, int hour, int minute, int second);
     Event(Event &a);
-    Event(const Event &a);
     ~Event();
+    void ToStringEvent();
+    void SetEvent (const char* name);
+    char* GetEvent();
+    void copyName ();
 
 protected:
     char* event;
-
+    char* eventName;
 };
 
 #endif //DATE_CPP_EVENT_H

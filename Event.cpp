@@ -5,42 +5,114 @@
 #include <cstring>
 #include <fstream>
 #include "Event.h"
-#include <string.h>
 
-Event::Event() {
-    Day = 1, Month = 1, Year = 2007,
-    Hour = 0, Minute = 0, Second = 0;
-    this->str = nullptr;
-    sizeStr = 0;
-    ToString();
+Event::Event() : Date() {
+    event = nullptr;
+    eventName = nullptr;
+    ToStringEvent();
 }
 Event::Event(int day, int month, int year, int hour, int minute, int second) {
     if (CheckTime(hour, minute, second) && CheckData(day, month, year)) {
-        this-> Day = day, this-> Month = month, this-> Year = year;
-        this-> Hour = hour, this-> Minute = minute, this-> Second = second;
-        this->str = nullptr;
-        sizeStr = 0;
-        ToString();
+        Day = day,  Month = month,  Year = year;
+        Hour = hour,  Minute = minute,  Second = second;
+        str = nullptr; eventName = nullptr;
+        event = nullptr;
+        ToStringEvent();
+        copyName();
     } else {
         Day = 1, Month = 1, Year = 2007,
         Hour = 0, Minute = 0, Second = 0;
-        this->str = nullptr;
-        sizeStr = 0;
-        ToString();
+        str = nullptr; eventName = nullptr;
+        event = nullptr;
+        ToStringEvent();
+        copyName();
     }
 }
 Event::Event(Event &a) {
-    this-> Day = a.Day, this-> Month = a.Month, this-> Year = a.Year;
-    this-> Hour = a.Hour, this-> Minute = a.Minute, this-> Second = a.Second;
-    this->str = nullptr; this->sizeStr = 0;
-    ToString();
+    Day = a.Day,  Month = a.Month,  Year = a.Year;
+    Hour = a.Hour,  Minute = a.Minute,  Second = a.Second;
+    str = nullptr; event = nullptr;
+    eventName = a.eventName;
+    ToStringEvent();
+    copyName();
 }
-Event::Event(const Event &a) {
-    this-> Day = a.Day, this-> Month = a.Month, this-> Year = a.Year;
-    this-> Hour = a.Hour, this-> Minute = a.Minute, this-> Second = a.Second;
-    this->str = nullptr; this->sizeStr = 0;
-    ToString();
-}
+
 Event::~Event() {
-    delete[]this->str;
+    delete[]event;
+    delete[]eventName;
+    delete[]str;
+}
+
+void Event::copyName() {
+    if (eventName != nullptr) {
+        sprintf(event + strlen(str), "%c", ' ');
+        int j = 0;
+        for (int i = strlen(str) + 1; i < strlen(eventName) + strlen(str) + 2; i++) {
+            event[i] = eventName[j];
+            j++;
+        }
+    }
+}
+
+void Event::ToStringEvent() {
+    int size[6], sum = 0;
+    int date[6] = { Day, Month, Year, Hour, Minute, Second };
+    for (int i = 0; i < 6; i++) {
+        size[i] = countCalc(date[i]);
+        sum += countCalc(date[i]);
+    }
+    delete[] str;
+    delete[] event;
+    str = new char[sum + 6];
+    event = new char[sum + 26];
+    int move = 0;
+    for (int i = 0; i < 6; i++) {
+        sprintf(str + move, "%d", date[i]);
+        sprintf(event + move, "%d", date[i]);
+        move += size[i];
+        if (i < 2) {
+            sprintf(str + move, "%c", '/');
+            sprintf(event + move, "%c", '/');
+            move++;
+        }
+        else if (i == 2) {
+            sprintf(str + move, "%c", '-');
+            sprintf(event + move, "%c", '-');
+            move++;
+        }
+        else if (i < 5) {
+            sprintf(str + move, "%c", ':');
+            sprintf(event + move, "%c", ':');
+            move++;
+        }
+        /*if (i == 5) {
+            sprintf(str + move, "%c", '\0');
+            //sprintf(event + move, "%c", '-');
+        }*/
+    }
+
+}
+
+void Event::SetEvent(const char *name) {
+    if (strlen(name) > 20) {
+        throw invalid_argument("Invalid length of event name");
+    } else {
+        cout << event << " -" << eventName << endl;
+        ToStringEvent();
+        cout << event << " +" << eventName << endl;
+        delete[]eventName;
+        eventName = new char [strlen(name)+1];
+        for (int i = 0; i < strlen(name); i++) {
+            eventName[i] = name[i];
+        }
+        cout << event << " *" << eventName << endl;
+        copyName();
+        cout << event << " =" << eventName << endl;
+    }
+}
+
+char* Event::GetEvent() {
+    char* copy = new char [strlen(event)+1];
+    strcpy(copy, event);
+    return copy;
 }

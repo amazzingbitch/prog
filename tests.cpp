@@ -4,6 +4,7 @@
 
 #include "Date.h"
 #include "catch.hpp"
+#include "Event.h"
 #include <iostream>
 #include <fstream>
 #include <cstring>
@@ -133,6 +134,23 @@ TEST_CASE("DateTime class tests 3", "[LAB3]") {
     binFileOut >> dd;
     binFileOut.close();
 */
+}
+TEST_CASE("DateTime class tests 4", "[LAB4]") {
+    Event a;
+    REQUIRE(strcmp(a.GetStr(), "1/1/2007-0:0:0") == 0);
+    const char* h = "birthday";
+    a.SetEvent(h);
+    /*REQUIRE(strcmp(a.GetEvent(), "1/1/2007-0:0:0 birthday") == 0);
+
+    Event n(28, 2, 2020, 23, 5, 14);
+    REQUIRE(strcmp(n.GetStr(), "28/2/2020-23:5:14") == 0);
+    const char* f = "funeral";
+    n.SetEvent(f);
+    REQUIRE(strcmp(n.GetEvent(), "28/2/2020-23:5:14 funeral") == 0);
+
+    Event c(n);
+    REQUIRE(strcmp(n.GetStr(), c.GetStr()) == 0);
+    REQUIRE(strcmp(n.GetEvent(), c.GetEvent()) == 0);*/
 }
 TEST_CASE("DateTime class tests 6", "[LAB6]") {
     Date test;
