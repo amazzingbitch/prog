@@ -8,11 +8,16 @@ CMakeFiles/prog2.dir/Event.cpp.obj: \
  ../Date.h \
  ../Event.cpp \
  ../Event.h
+CMakeFiles/prog2.dir/TimeString.cpp.obj: \
+ ../Date.h \
+ ../TimeString.cpp \
+ ../TimeString.h
 CMakeFiles/prog2.dir/main.cpp.obj: \
  ../catch.hpp \
  ../main.cpp
 CMakeFiles/prog2.dir/tests.cpp.obj: \
  ../Date.h \
  ../Event.h \
+ ../TimeString.h \
  ../catch.hpp \
  ../tests.cpp

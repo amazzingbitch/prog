@@ -4,7 +4,6 @@
 #include <cstring>
 #include <fstream>
 #include "Date.h"
-#include <string.h>
 
 Date::Date() {
     Day = 1, Month = 1, Year = 2007,

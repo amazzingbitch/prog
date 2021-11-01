@@ -5,6 +5,7 @@
 #include "Date.h"
 #include "catch.hpp"
 #include "Event.h"
+#include "TimeString.h"
 #include <iostream>
 #include <fstream>
 #include <cstring>
@@ -149,6 +150,18 @@ TEST_CASE("DateTime class tests 4", "[LAB4]") {
     Event c(n);
     REQUIRE(strcmp(n.GetStr(), c.GetStr()) == 0);
     REQUIRE(strcmp(n.GetEvent(), c.GetEvent()) == 0);
+
+    TimeString d;
+    REQUIRE(strcmp(d.GetStr(), "1/1/2007-0:0:0") == 0);
+    REQUIRE(strcmp(d.GetTime(), "12:0:0 am") == 0);
+
+    TimeString e(28, 2, 2020, 23, 5, 14);
+    REQUIRE(strcmp(e.GetStr(), "28/2/2020-23:5:14") == 0);
+    REQUIRE(strcmp(e.GetTime(), "11:5:14 pm") == 0);
+
+    TimeString f(e);
+    REQUIRE(strcmp(f.GetStr(), e.GetStr()) == 0);
+    REQUIRE(strcmp(f.GetTime(), e.GetTime()) == 0);
 }
 TEST_CASE("DateTime class tests 6", "[LAB6]") {
     Date test;
