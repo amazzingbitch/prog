@@ -498,7 +498,7 @@ TEST_CASE("DateTime class tests 5", "[LAB5]") {
     Date a;
     Event b(28, 2, 2000, 23, 5, 14, "family dinner");
     TimeString c(28, 2, 2020, 23, 5, 14);
-    List Lst;
+    List <Date> Lst;
     Lst.Push(a);
     Lst.Push(b);
     REQUIRE(strcmp(Lst[1].GetStr(), "1/1/2007 0:0:0") == 0);
@@ -511,7 +511,7 @@ TEST_CASE("DateTime class tests 5", "[LAB5]") {
     } catch (exception &ex) {
         REQUIRE(strcmp(ex.what(), "Invalid index") == 0);
     }
-    List Lst2;
+    List <Date> Lst2;
     try {
         Lst2[0];
     } catch (exception &ex) {
@@ -568,5 +568,54 @@ TEST_CASE("DateTime class tests 6", "[LAB6]") {
         test3 = test3 - 25;
     } catch (exception &ex) {
         REQUIRE(strcmp(ex.what(), "Negative year") == 0);
+    }
+}
+TEST_CASE("DateTime class tests 7", "[LAB7]") {
+    SECTION("Templates <int>") {
+        List <int> q1;
+        int n1 = 5, n2 = 1, n3 = 9;
+
+        q1.Push(n1);
+        q1.Push(n2);
+        q1.Push(n3);
+
+        REQUIRE(q1[0] == 9);
+        REQUIRE(q1[1] == 1);
+        REQUIRE(q1[2] == 5);
+
+        q1.Pop();
+        REQUIRE(q1[0] == 1);
+    }
+
+    SECTION("Templates <float>") {
+        List <float> q2;
+        float n1 = 6.6, n2 = 8.4, n3 = 2.8;
+
+        q2.Push(n1);
+        q2.Push(n2);
+        q2.Push(n3);
+
+        REQUIRE(q2[0] == 2.8f);
+        REQUIRE(q2[1] == 8.4f);
+        REQUIRE(q2[2] == 6.6f);
+
+        q2.Pop();
+        REQUIRE(q2[0] == 8.4f);
+    }
+
+    SECTION("Templates <char>") {
+        List <char> q3;
+        char n1 = 'c', n2 = 'a', n3 = 't';
+
+        q3.Push(n1);
+        q3.Push(n2);
+        q3.Push(n3);
+
+        REQUIRE(q3[0] == 't');
+        REQUIRE(q3[1] == 'a');
+        REQUIRE(q3[2] == 'c');
+
+        q3.Pop();
+        REQUIRE(q3[0] == 'a');
     }
 }

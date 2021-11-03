@@ -8,14 +8,16 @@
 #include "Node.h"
 #include "Date.h"
 
+template <typename T>
+
 class List {
 public:
     List() : top(nullptr) {}
 
     bool IsEmpty() { return top == nullptr; }
 
-    void Push(Date &_date) {
-        auto *tmp = new node(_date);
+    void Push(T &_T) {
+        auto *tmp = new node<T>(_T);
         if (IsEmpty()) {
             top = tmp;
         } else {
@@ -26,23 +28,23 @@ public:
 
     void Pop() {
         if (IsEmpty()) return;
-        node *tmp = top;
+        node<T> *tmp = top;
         top = tmp->next;
         delete tmp;
     }
 
-    Date &operator[](int i) {
+    T &operator[](int i) {
         if (top == nullptr) throw invalid_argument("Invalid index");
-        node *tmp = top;
+        node<T> *tmp = top;
         for (int j = 0; j < i; ++j) {
             tmp = tmp->next;
             if (tmp == nullptr) throw invalid_argument("Invalid index");
         }
-        return tmp->date;
+        return tmp->t;
     }
 
 private:
-    node *top;
+    node<T> *top;
 };
 
 #endif //PROG2_LIST_H

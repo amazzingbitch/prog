@@ -7,11 +7,13 @@
 
 #include "Date.h"
 
+template <typename T>
+
 struct node {
     node *next;
-    Date &date;
+    T &t;
 
-    explicit node(Date &_date) : next(nullptr), date(_date) {}
+    node(T &_T) : next(nullptr), t(_T) {}
 };
 
 

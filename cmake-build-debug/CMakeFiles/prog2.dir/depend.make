@@ -18,6 +18,8 @@ CMakeFiles/prog2.dir/main.cpp.obj: \
 CMakeFiles/prog2.dir/tests.cpp.obj: \
  ../Date.h \
  ../Event.h \
+ ../List.h \
+ ../Node.h \
  ../TimeString.h \
  ../catch.hpp \
  ../tests.cpp
