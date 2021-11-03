@@ -92,6 +92,12 @@
 		<Unit filename="C:/Users/casde/CLionProjects/prog2/Event.h">
 			<Option target="prog2"/>
 		</Unit>
+		<Unit filename="C:/Users/casde/CLionProjects/prog2/List.h">
+			<Option target="prog2"/>
+		</Unit>
+		<Unit filename="C:/Users/casde/CLionProjects/prog2/Node.h">
+			<Option target="prog2"/>
+		</Unit>
 		<Unit filename="C:/Users/casde/CLionProjects/prog2/TimeString.cpp">
 			<Option target="prog2"/>
 		</Unit>

@@ -6,10 +6,6 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/casde/CLionProjects/prog2/Date.cpp
-Date.h
-C:/Users/casde/CLionProjects/prog2/Date.h
-
 C:/Users/casde/CLionProjects/prog2/Date.h
 iostream
 -
@@ -18,17 +14,19 @@ cstring
 fstream
 -
 
-C:/Users/casde/CLionProjects/prog2/Event.cpp
-Event.h
-C:/Users/casde/CLionProjects/prog2/Event.h
-
 C:/Users/casde/CLionProjects/prog2/Event.h
 Date.h
 C:/Users/casde/CLionProjects/prog2/Date.h
 
-C:/Users/casde/CLionProjects/prog2/TimeString.cpp
-TimeString.h
-C:/Users/casde/CLionProjects/prog2/TimeString.h
+C:/Users/casde/CLionProjects/prog2/List.h
+Node.h
+C:/Users/casde/CLionProjects/prog2/Node.h
+Date.h
+C:/Users/casde/CLionProjects/prog2/Date.h
+
+C:/Users/casde/CLionProjects/prog2/Node.h
+Date.h
+C:/Users/casde/CLionProjects/prog2/Date.h
 
 C:/Users/casde/CLionProjects/prog2/TimeString.h
 Date.h
@@ -637,4 +635,6 @@ Event.h
 C:/Users/casde/CLionProjects/prog2/Event.h
 TimeString.h
 C:/Users/casde/CLionProjects/prog2/TimeString.h
+List.h
+C:/Users/casde/CLionProjects/prog2/List.h
 

@@ -5,6 +5,7 @@
 #include "Date.h"
 #include "Event.h"
 #include "TimeString.h"
+#include "List.h"
 
 TEST_CASE("DateTime class tests", "[LAB1]") {
     Date a(28, 2, 2020, 23, 5, 14);
@@ -491,6 +492,30 @@ TEST_CASE("DateTime class tests 4", "[LAB4]") {
         } catch (exception &ex) {
             REQUIRE(strcmp(ex.what(), "Negative year") == 0);
         }
+    }
+}
+TEST_CASE("DateTime class tests 5", "[LAB5]") {
+    Date a;
+    Event b(28, 2, 2000, 23, 5, 14, "family dinner");
+    TimeString c(28, 2, 2020, 23, 5, 14);
+    List Lst;
+    Lst.Push(a);
+    Lst.Push(b);
+    REQUIRE(strcmp(Lst[1].GetStr(), "1/1/2007 0:0:0") == 0);
+    REQUIRE(strcmp(Lst[0].GetStr(), "28/2/2000 23:5:14") == 0);
+    Lst.Pop();
+    Lst.Push(c);
+    REQUIRE(strcmp(Lst[0].GetStr(), "28/2/2020 23:5:14") == 0);
+    try {
+        Lst[2];
+    } catch (exception &ex) {
+        REQUIRE(strcmp(ex.what(), "Invalid index") == 0);
+    }
+    List Lst2;
+    try {
+        Lst2[0];
+    } catch (exception &ex) {
+        REQUIRE(strcmp(ex.what(), "Invalid index") == 0);
     }
 }
 TEST_CASE("DateTime class tests 6", "[LAB6]") {
