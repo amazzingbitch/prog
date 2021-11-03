@@ -6,6 +6,10 @@
 #include "Event.h"
 #include "TimeString.h"
 #include "List.h"
+#include <map>
+#include <vector>
+#include <ctime>
+#include <cstdlib>
 
 TEST_CASE("DateTime class tests", "[LAB1]") {
     Date a(28, 2, 2020, 23, 5, 14);
@@ -617,5 +621,24 @@ TEST_CASE("DateTime class tests 7", "[LAB7]") {
 
         q3.Pop();
         REQUIRE(q3[0] == 'a');
+    }
+}
+TEST_CASE("DateTime class tests 8", "[LAB8]") {
+    SECTION("STL: map") {
+        cout << "Map" << endl;
+        map<int, int> m;
+        m.insert(make_pair(1, 1));
+        REQUIRE(m[1] == 1);
+        srand(time(nullptr));
+        int start = clock();
+        for (int i = 0; i < 10000; ++i) {
+            m.insert(make_pair(i, rand() % 10000));
+        }
+        cout << "Add : " << clock() - start << endl;
+        start = clock();
+        for (int i = 0; i < 10000; ++i) {
+            m.find(i);
+        }
+        cout << "Find : " << clock() - start << endl;
     }
 }
