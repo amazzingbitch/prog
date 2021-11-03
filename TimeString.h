@@ -6,8 +6,6 @@
 #define DATE_CPP_TIMESTRING_H
 
 #include "Date.h"
-#include <cstring>
-#include <fstream>
 
 class TimeString : public Date {
 public:
@@ -18,7 +16,6 @@ public:
     ~TimeString();
     void ToStringTime();
     char* GetTime();
-
     void SetDay(int day) override;
     void SetMonth(int month) override;
     void SetY(int year) override;
@@ -27,11 +24,14 @@ public:
     void SetSecond(int second) override;
     void Plus(char k) override;
     void Minus(char k) override;
-
     friend TimeString operator+(const TimeString &d1, const TimeString &d2);
     friend TimeString operator-(const TimeString &d1, const TimeString &d2);
+    friend TimeString operator+(const TimeString &d1, int hour);
+    friend TimeString operator-(const TimeString &d1, int hour);
     TimeString &operator=(const TimeString &right);
+    friend ostream& operator << (ostream& os, const TimeString& d);
     friend istream& operator >> (istream& os, TimeString& d);
+    friend ofstream& BinIn (ofstream &os, TimeString &val);
     friend ifstream& BinOut (ifstream &is, TimeString &val);
 
 protected:

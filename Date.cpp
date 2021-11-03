@@ -1,44 +1,33 @@
 //
 // Created by casde on 15.10.2021.
 //
-#include <cstring>
-#include <fstream>
 #include "Date.h"
 
 Date::Date() {
     Day = 1, Month = 1, Year = 2007,
-    Hour = 0, Minute = 0, Second = 0;
-    str = nullptr;
-    ToString();
+    Hour = 0, Minute = 0, Second = 0; str = nullptr; ToString();
 }
 Date::Date(int day, int month, int year, int hour, int minute, int second) {
     if (CheckTime(hour, minute, second) && CheckData(day, month, year)) {
-         Day = day,  Month = month,  Year = year;
-         Hour = hour,  Minute = minute,  Second = second;
-        str = nullptr;
-        ToString();
+        Day = day,  Month = month,  Year = year;
+        Hour = hour,  Minute = minute,  Second = second;
+        str = nullptr; ToString();
     } else {
-        Day = 1, Month = 1, Year = 2007,
-        Hour = 0, Minute = 0, Second = 0;
-        str = nullptr;
-        ToString();
+        Day = 1, Month = 1, Year = 2007, Hour = 0, Minute = 0, Second = 0;
+        str = nullptr; ToString();
     }
 }
 Date::Date(Date &a) {
-     Day = a.Day,  Month = a.Month,  Year = a.Year;
-     Hour = a.Hour,  Minute = a.Minute,  Second = a.Second;
-    str = nullptr;
-    ToString();
+    Day = a.Day,  Month = a.Month,  Year = a.Year;
+    Hour = a.Hour,  Minute = a.Minute,  Second = a.Second;
+    str = nullptr; ToString();
 }
 Date::Date(const Date &a) {
-     Day = a.Day,  Month = a.Month,  Year = a.Year;
-     Hour = a.Hour,  Minute = a.Minute,  Second = a.Second;
-    str = nullptr;
-    ToString();
+    Day = a.Day, Month = a.Month, Year = a.Year;
+    Hour = a.Hour, Minute = a.Minute, Second = a.Second;
+    str = nullptr; ToString();
 }
-Date::~Date() {
-    delete[]str;
-}
+Date::~Date() { delete[]str; }
 void Date::ToString() {
     int size[6], sum = 0;
     int date[6] = { Day, Month, Year, Hour, Minute, Second };
@@ -57,21 +46,17 @@ void Date::ToString() {
             move++;
         }
         else if (i == 2) {
-            sprintf(str + move, "%c", '-');
+            sprintf(str + move, "%c", ' ');
             move++;
         }
         else if (i < 5) {
             sprintf(str + move, "%c", ':');
             move++;
         }
-        /*if (i == 5) {
-            sprintf(str + move, "%c", '\0');
-        }*/
     }
 }
 int Date::countCalc(int num) {
-    int len = 0;
-    if (num == 0) return 1;
+    int len = 0; if (num == 0) return 1;
     while (num > 0) {
         len++;
         num = num / 10;
@@ -79,60 +64,51 @@ int Date::countCalc(int num) {
     return len;
 }
 char* Date::GetStr() { // геттер строки
-    char* copy = new char [strlen(str)+1];
-    strcpy(copy, str);
-    return copy;
+    char* copy = new char [strlen(str)+1]; strcpy(copy, str); return copy;
 }
 void Date::SetDay(int day) {
     if (CheckDay(day, Month, Year)) {
-         Day = day;
-        ToString();
+        Day = day; ToString();
     } else {
         throw invalid_argument("Invalid day");
     }
 }
 void Date::SetMonth(int month) {
     if (month > 0 && month < 13) {
-         Month = month;
-        ToString();
+        Month = month; ToString();
     } else {
         throw invalid_argument("Invalid month");
     }
 }
 void Date::SetY(int year) {
     if (year >= 0) {
-         Year = year;
-        ToString();
+        Year = year; ToString();
     } else {
         throw invalid_argument("Invalid year");
     }
 }
 void Date::SetH(int hour) {
     if (hour < 24 && hour >= 0) {
-        Hour = hour;
-        ToString();
+        Hour = hour; ToString();
     } else {
         throw invalid_argument("Invalid hour");
     }
 }
 void Date::SetMinute(int minute) {
     if (minute < 60 && minute >= 0) {
-         Minute = minute;
-        ToString();
+        Minute = minute; ToString();
     } else {
         throw invalid_argument("Invalid minute");
     }
 }
 void Date::SetSecond(int second) {
     if (second < 60 && second >= 0) {
-         Second = second;
-        ToString();
+        Second = second; ToString();
     } else {
         throw invalid_argument("Invalid second");
     }
 }
-bool Date::CheckData(int day, int month, int year)
-{
+bool Date::CheckData(int day, int month, int year) {
     if (year < 0 || day < 1 || month < 1 || month > 12 || !(CheckDay(day, month, year)))
         return false;
     else
@@ -148,8 +124,7 @@ bool Date::CheckDay(int day, int month, int year) {
         else return true;
     }
 }
-bool Date::CheckTime(int hour, int minute, int second)
-{
+bool Date::CheckTime(int hour, int minute, int second) {
     if (hour >= 0  && hour < 24 && minute >= 0 && minute < 60 && second >= 0 && second < 60)
         return true;
     else
@@ -400,8 +375,7 @@ Date operator+(const Date &d1, const Date &d2) {
             temp.Plus('s');
         }
     }
-    temp.ToString();
-    return temp;
+    temp.ToString(); return temp;
 }
 Date &Date::operator=(const Date &a) {
     if (this == &a) {
@@ -415,13 +389,12 @@ Date &Date::operator=(const Date &a) {
 Date operator-(const Date &d1, const Date &d2) {
     Date temp;
     if (d1.Year < d2.Year) {
-        //temp.Year = 1;
         throw invalid_argument("Negative year");
     } else {
         temp.Year = d1.Year - d2.Year;
     }
     temp.Month = d1.Month;
-    int raz = 0;
+    int raz;
     if ((d1.Month - d2.Month) >= 1) {
         raz = abs(d1.Month - d2.Month);
     } else {
@@ -430,33 +403,26 @@ Date operator-(const Date &d1, const Date &d2) {
     for (int i = 0; i < raz; i++) {
         temp.Minus('M');
     }
-
     temp.Day = d1.Day;
     for (int i = 0; i < abs(d1.Day - d2.Day); i++) {
         temp.Minus('d');
     }
-
     temp.Hour = d1.Hour;
     raz = d2.Hour;
     for (int i = 0; i < raz; i++) {
         temp.Minus('h');
     }
-
     temp.Minute = d1.Minute;
     raz = d2.Minute;
     for (int i = 0; i < raz; i++) {
         temp.Minus('m');
     }
-
     temp.Second = d1.Second;
     raz = d2.Second;
     for (int i = 0; i < raz; i++) {
         temp.Minus('s');
     }
-
-    temp.ToString();
-
-    return temp;
+    temp.ToString(); return temp;
 }
 Date operator+(const Date &d1, int hour) {
     Date temp(d1);
@@ -474,38 +440,22 @@ Date operator-(const Date &d1, int hour) {
     }
     return temp;
 }
-
 Date::operator char*() { return GetStr(); }
-
-ostream &operator<<(ostream &os, const Date &d) {
-    os << d.str;
-    // d.Day << " " << d.Month << " " << d.Year << " " << d.Hour << " " << d.Minute << " " << d.Second;
-    return os;
-}
-
+ostream &operator<<(ostream &os, const Date &d) { os << d.str; return os; }
 istream &operator>>(istream &is, Date &d) {
-    //is >> d.str;
-    /*stringstream ss;
-    ss << d.str;*/
     is >> d.Day;
     is.ignore(256, '/');
-    //cout << d.Day << endl;
     is >> d.Month;
     is.ignore(256, '/');
     is >> d.Year;
-    is.ignore(256, '-');
+    is.ignore(256, ' ');
     is >> d.Hour;
     is.ignore(256, ':');
     is >> d.Minute;
     is.ignore(256, ':');
     is >> d.Second;
-
-    //is.ignore(256, '\0');
-    //is >> d.Day >> d.Month >> d.Year >> d.Hour >> d.Minute >> d.Second;
-    d.ToString();
-    return is;
+    d.ToString(); return is;
 }
-
 ofstream& BinIn (ofstream& os, Date& p) {
     os.write((char*)&p.Day, sizeof(int));
     os.write((char*)&p.Month, sizeof(int));
@@ -515,7 +465,6 @@ ofstream& BinIn (ofstream& os, Date& p) {
     os.write((char*)&p.Second, sizeof(int));
     return os;
 }
-
 ifstream& BinOut (ifstream& in, Date& p) {
     in.read((char*)&p.Day, sizeof(int));
     in.read((char*)&p.Month, sizeof(int));

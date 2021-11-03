@@ -4,13 +4,12 @@
 
 #ifndef PROG2_DATE_H
 #define PROG2_DATE_H
+
 #include <iostream>
-#include <sstream>
-#include <iomanip>
-#include <string>
-#include <cstdlib>
-#include <cmath>
+#include <cstring>
+#include <fstream>
 using namespace std;
+
 class Date {
 public:
     Date();

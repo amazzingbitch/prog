@@ -3,9 +3,7 @@
 //
 #include "Event.h"
 
-Event::Event() : Date() {
-    event = nullptr; eventName = nullptr; ToStringEvent();
-}
+Event::Event() : Date() { event = nullptr; eventName = nullptr; ToStringEvent(); }
 Event::Event(int day, int month, int year, int hour, int minute, int second) {
     if (CheckTime(hour, minute, second) && CheckData(day, month, year)) {
         Day = day, Month = month, Year = year; Hour = hour, Minute = minute, Second = second;
@@ -15,9 +13,18 @@ Event::Event(int day, int month, int year, int hour, int minute, int second) {
         str = nullptr; eventName = nullptr; event = nullptr; ToString(); ToStringEvent();
     }
 }
+Event::Event(int day, int month, int year, int hour, int minute, int second, const char* name) {
+    if (CheckTime(hour, minute, second) && CheckData(day, month, year)) {
+        Day = day, Month = month, Year = year; Hour = hour, Minute = minute, Second = second;
+        str = nullptr; eventName = (char*)name; event = nullptr; ToString(); ToStringEvent();
+    } else {
+        Day = 1, Month = 1, Year = 2007, Hour = 0, Minute = 0, Second = 0;
+        str = nullptr; eventName = (char*)name; event = nullptr; ToString(); ToStringEvent();
+    }
+}
 Event::Event(Event &a) : Date (a) { eventName = a.eventName; event = nullptr; ToStringEvent(); }
 Event::Event(const Event &a) : Date (a) { eventName = a.eventName; event = nullptr; ToStringEvent(); }
-Event::~Event() { delete[]event; delete[]eventName; delete[]str; }
+Event::~Event() { delete[]event; delete[]eventName; }
 void Event::ToStringEvent() {
     int size[6], sum = 0;
     int date[6] = { Day, Month, Year, Hour, Minute, Second };
@@ -34,7 +41,7 @@ void Event::ToStringEvent() {
             move++;
         }
         else if (i == 2) {
-            sprintf(event + move, "%c", '-');
+            sprintf(event + move, "%c", ' ');
             move++;
         }
         else if (i < 5) {
@@ -57,58 +64,49 @@ void Event::SetEvent(const char* name) {
         strcpy(eventName, name); ToStringEvent();
     }
 }
-char* Event::GetEvent() {
-    char* copy = new char [strlen(event)+1]; strcpy(copy, event); return copy;
-}
+char* Event::GetEvent() { char* copy = new char [strlen(event)+1]; strcpy(copy, event); return copy; }
 void Event::SetDay(int day) {
     if (CheckDay(day, Month, Year)) {
-        Day = day;
-        ToString(); ToStringEvent();
+        Day = day; ToString(); ToStringEvent();
     } else {
         throw invalid_argument("Invalid day");
     }
 }
 void Event::SetMonth(int month) {
     if (month > 0 && month < 13) {
-        Month = month;
-        ToString(); ToStringEvent();
+        Month = month; ToString(); ToStringEvent();
     } else {
         throw invalid_argument("Invalid month");
     }
 }
 void Event::SetY(int year) {
     if (year >= 0) {
-        Year = year;
-        ToString(); ToStringEvent();
+        Year = year; ToString(); ToStringEvent();
     } else {
         throw invalid_argument("Invalid year");
     }
 }
 void Event::SetH(int hour) {
     if (hour < 24 && hour >= 0) {
-        Hour = hour;
-        ToString(); ToStringEvent();
+        Hour = hour; ToString(); ToStringEvent();
     } else {
         throw invalid_argument("Invalid hour");
     }
 }
 void Event::SetMinute(int minute) {
     if (minute < 60 && minute >= 0) {
-        Minute = minute;
-        ToString(); ToStringEvent();
+        Minute = minute; ToString(); ToStringEvent();
     } else {
         throw invalid_argument("Invalid minute");
     }
 }
 void Event::SetSecond(int second) {
     if (second < 60 && second >= 0) {
-        Second = second;
-        ToString(); ToStringEvent();
+        Second = second; ToString(); ToStringEvent();
     } else {
         throw invalid_argument("Invalid second");
     }
 }
-
 void Event::Plus(char k) {
     switch (k) {
         case 'y':
@@ -151,7 +149,6 @@ void Event::Plus(char k) {
     }
     ToString(); ToStringEvent();
 }
-
 void Event::Minus(char k) {
     switch (k) {
         case 'y':
@@ -196,10 +193,9 @@ void Event::Minus(char k) {
     ToString(); ToStringEvent();
 }
 Event operator+(const Event &d1, const Event &d2) {
-    Event temp;
-    int month, day, hour, min, sec;
-    temp.Year = d1.Year + d2.Year;
-    month = d1.Month + d2.Month;
+    Event temp; int month, day, hour, min, sec;
+    temp.eventName = d1.eventName;
+    temp.Year = d1.Year + d2.Year; month = d1.Month + d2.Month;
     if (month <= 12) {
         temp.Month = month;
     } else {
@@ -259,14 +255,14 @@ Event &Event::operator=(const Event &a) {
 }
 Event operator-(const Event &d1, const Event &d2) {
     Event temp;
+    temp.eventName = d1.eventName;
     if (d1.Year < d2.Year) {
-        //temp.Year = 1;
         throw invalid_argument("Negative year");
     } else {
         temp.Year = d1.Year - d2.Year;
     }
     temp.Month = d1.Month;
-    int raz = 0;
+    int raz;
     if ((d1.Month - d2.Month) >= 1) {
         raz = abs(d1.Month - d2.Month);
     } else {
@@ -304,25 +300,20 @@ Event operator-(const Event &d1, const Event &d2) {
 
     return temp;
 }
-
+ostream &operator<<(ostream &os, const Event &d) { os << d.event; return os; }
 istream &operator>>(istream &is, Event &d) {
-    //is >> d.str;
-    /*stringstream ss;
-    ss << d.str;*/
-    is >> d.Day;
-    is.ignore(256, '/');
-    //cout << d.Day << endl;
-    is >> d.Month;
-    is.ignore(256, '/');
-    is >> d.Year;
-    is.ignore(256, '-');
-    is >> d.Hour;
-    is.ignore(256, ':');
-    is >> d.Minute;
-    is.ignore(256, ':');
+    is >> d.Day; is.ignore(256, '/');
+    is >> d.Month; is.ignore(256, '/');
+    is >> d.Year; is.ignore(256, ' ');
+    is >> d.Hour; is.ignore(256, ':');
+    is >> d.Minute; is.ignore(256, ':');
     is >> d.Second;
-
-    d.ToString(); d.ToStringEvent();
+    is.ignore(256, ' ');
+    delete[]d.eventName;
+    d.eventName = new char[21];
+    is >> d.eventName;
+    d.ToString();
+    d.ToStringEvent();
     return is;
 }
 ifstream& BinOut (ifstream& in, Event& p) {
@@ -332,6 +323,33 @@ ifstream& BinOut (ifstream& in, Event& p) {
     in.read((char*)&p.Hour, sizeof(int));
     in.read((char*)&p.Minute, sizeof(int));
     in.read((char*)&p.Second, sizeof(int));
+    in.read((char*)&p.eventName, sizeof(char*));
     p.ToString(); p.ToStringEvent();
     return in;
+}
+ofstream& BinIn (ofstream& os, Event& p) {
+    os.write((char*)&p.Day, sizeof(int));
+    os.write((char*)&p.Month, sizeof(int));
+    os.write((char*)&p.Year, sizeof(int));
+    os.write((char*)&p.Hour, sizeof(int));
+    os.write((char*)&p.Minute, sizeof(int));
+    os.write((char*)&p.Second, sizeof(int));
+    os.write((char*)&p.eventName, sizeof(char*));
+    return os;
+}
+Event operator+(const Event &d1, int hour) {
+    Event temp(d1);
+    for (int i = 0; i < hour; i++) {
+        temp.Plus('h');
+    }
+    return temp;
+}
+Event operator-(const Event &d1, int hour) {
+    Event temp(d1);
+    for (int i = 0; i < hour; i++) {
+        if (temp.Year == 0 && temp.Month == 1 && temp.Day == 1 && temp.Hour == 0 && temp.Minute == 0 && temp.Second == 0)
+            throw invalid_argument("Negative year");
+        temp.Minus('h');
+    }
+    return temp;
 }
