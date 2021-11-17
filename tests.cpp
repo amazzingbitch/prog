@@ -132,62 +132,26 @@ TEST_CASE("DateTime class tests 4", "[LAB4]") {
         REQUIRE(strcmp(n.GetStr(), c.GetStr()) == 0);
         REQUIRE(strcmp(n.GetEvent(), c.GetEvent()) == 0);
 
-        a.Plus('y');
-        REQUIRE(strcmp(a.GetStr(), "1/1/2008 0:0:0") == 0);
-        REQUIRE(strcmp(a.GetEvent(), "1/1/2008 0:0:0 birthday") == 0);
-        a.Plus('M');
-        REQUIRE(strcmp(a.GetStr(), "1/2/2008 0:0:0") == 0);
-        REQUIRE(strcmp(a.GetEvent(), "1/2/2008 0:0:0 birthday") == 0);
-        a.Plus('d');
-        REQUIRE(strcmp(a.GetStr(), "2/2/2008 0:0:0") == 0);
-        REQUIRE(strcmp(a.GetEvent(), "2/2/2008 0:0:0 birthday") == 0);
-        a.Plus('h');
-        REQUIRE(strcmp(a.GetStr(), "2/2/2008 1:0:0") == 0);
-        REQUIRE(strcmp(a.GetEvent(), "2/2/2008 1:0:0 birthday") == 0);
         a.Plus('m');
-        REQUIRE(strcmp(a.GetStr(), "2/2/2008 1:1:0") == 0);
-        REQUIRE(strcmp(a.GetEvent(), "2/2/2008 1:1:0 birthday") == 0);
+        REQUIRE(strcmp(a.GetStr(), "1/1/2007 0:1:0") == 0);
+        REQUIRE(strcmp(a.GetEvent(), "1/1/2007 0:1:0 birthday") == 0);
         a.Plus('s');
-        REQUIRE(strcmp(a.GetStr(), "2/2/2008 1:1:1") == 0);
-        REQUIRE(strcmp(a.GetEvent(), "2/2/2008 1:1:1 birthday") == 0);
-
-        a.Minus('y');
-        REQUIRE(strcmp(a.GetStr(), "2/2/2007 1:1:1") == 0);
-        REQUIRE(strcmp(a.GetEvent(), "2/2/2007 1:1:1 birthday") == 0);
-        a.Minus('M');
-        REQUIRE(strcmp(a.GetStr(), "2/1/2007 1:1:1") == 0);
-        REQUIRE(strcmp(a.GetEvent(), "2/1/2007 1:1:1 birthday") == 0);
-        a.Minus('d');
-        REQUIRE(strcmp(a.GetStr(), "1/1/2007 1:1:1") == 0);
-        REQUIRE(strcmp(a.GetEvent(), "1/1/2007 1:1:1 birthday") == 0);
-        a.Minus('h');
         REQUIRE(strcmp(a.GetStr(), "1/1/2007 0:1:1") == 0);
         REQUIRE(strcmp(a.GetEvent(), "1/1/2007 0:1:1 birthday") == 0);
-        a.Minus('m');
-        REQUIRE(strcmp(a.GetStr(), "1/1/2007 0:0:1") == 0);
-        REQUIRE(strcmp(a.GetEvent(), "1/1/2007 0:0:1 birthday") == 0);
-        a.Minus('s');
-        REQUIRE(strcmp(a.GetStr(), "1/1/2007 0:0:0") == 0);
-        REQUIRE(strcmp(a.GetEvent(), "1/1/2007 0:0:0 birthday") == 0);
 
-        a.SetY(1984);
-        REQUIRE(strcmp(a.GetStr(), "1/1/1984 0:0:0") == 0);
-        REQUIRE(strcmp(a.GetEvent(), "1/1/1984 0:0:0 birthday") == 0);
-        a.SetMonth(3);
-        REQUIRE(strcmp(a.GetStr(), "1/3/1984 0:0:0") == 0);
-        REQUIRE(strcmp(a.GetEvent(), "1/3/1984 0:0:0 birthday") == 0);
+        a.Minus('y');
+        REQUIRE(strcmp(a.GetStr(), "1/1/2006 0:1:1") == 0);
+        REQUIRE(strcmp(a.GetEvent(), "1/1/2006 0:1:1 birthday") == 0);
+        a.Minus('m');
+        REQUIRE(strcmp(a.GetStr(), "1/1/2006 0:0:1") == 0);
+        REQUIRE(strcmp(a.GetEvent(), "1/1/2006 0:0:1 birthday") == 0);
+
         a.SetDay(15);
-        REQUIRE(strcmp(a.GetStr(), "15/3/1984 0:0:0") == 0);
-        REQUIRE(strcmp(a.GetEvent(), "15/3/1984 0:0:0 birthday") == 0);
+        REQUIRE(strcmp(a.GetStr(), "15/1/2006 0:0:1") == 0);
+        REQUIRE(strcmp(a.GetEvent(), "15/1/2006 0:0:1 birthday") == 0);
         a.SetH(12);
-        REQUIRE(strcmp(a.GetStr(), "15/3/1984 12:0:0") == 0);
-        REQUIRE(strcmp(a.GetEvent(), "15/3/1984 12:0:0 birthday") == 0);
-        a.SetMinute(30);
-        REQUIRE(strcmp(a.GetStr(), "15/3/1984 12:30:0") == 0);
-        REQUIRE(strcmp(a.GetEvent(), "15/3/1984 12:30:0 birthday") == 0);
-        a.SetSecond(49);
-        REQUIRE(strcmp(a.GetStr(), "15/3/1984 12:30:49") == 0);
-        REQUIRE(strcmp(a.GetEvent(), "15/3/1984 12:30:49 birthday") == 0);
+        REQUIRE(strcmp(a.GetStr(), "15/1/2006 12:0:1") == 0);
+        REQUIRE(strcmp(a.GetEvent(), "15/1/2006 12:0:1 birthday") == 0);
     }
     SECTION("Event operator tests") {
         Event d(22, 8, 1337, 7, 33, 1, "meeting");
@@ -212,87 +176,8 @@ TEST_CASE("DateTime class tests 4", "[LAB4]") {
 
         REQUIRE(strcmp("12/5/669 18:30:3", (char *) h) == 0);
     }
-    SECTION("Event input/output tests") {
-        Event a1(15, 3, 1984, 12, 4, 13, "chill");
-        Event b1;
-
-        fstream file;
-        file.open("../text3.txt", fstream::out);
-        if (!file.is_open()) {
-            std::cerr << "File open error" << "\n";
-            exit(1);
-        }
-        file << a1 << endl;
-        file.close();
-
-        file.open("../text3.txt", fstream::in);
-        if (!file.is_open()) {
-            std::cerr << "File open error" << "\n";
-            exit(1);
-        }
-        file >> b1;
-        REQUIRE(strcmp(a1.GetStr(), b1.GetStr()) == 0);
-        REQUIRE(strcmp(a1.GetEvent(), b1.GetEvent()) == 0);
-        file.close();
-
-        Event c1(20, 3, 1984, 12, 20, 20, "concert");
-        Event d1;
-
-        ofstream bin("..\\binText3.dat", ios::binary);
-        if (!bin.is_open()) {
-            cerr << "File open error";
-            exit(1);
-        }
-        BinIn(bin, c1);
-        bin.close();
-        ifstream bin2("..\\binText3.dat", ios::binary);
-        if (!bin2.is_open()) {
-            cerr << "File open error";
-            exit(1);
-        }
-        BinOut(bin2, d1);
-        bin2.close();
-        REQUIRE(strcmp(c1.GetStr(), d1.GetStr()) == 0);
-        REQUIRE(strcmp(c1.GetEvent(), d1.GetEvent()) == 0);
-    }
     SECTION("Event class exception tests") {
         Event test;
-        try {
-            test.SetY(-1);
-        } catch (exception &ex) {
-            REQUIRE(strcmp(ex.what(), "Invalid year") == 0);
-        }
-
-        try {
-            test.SetMonth(14);
-        } catch (exception &ex) {
-            REQUIRE(strcmp(ex.what(), "Invalid month") == 0);
-        }
-
-        try {
-            test.SetDay(32);
-        } catch (exception &ex) {
-            REQUIRE(strcmp(ex.what(), "Invalid day") == 0);
-        }
-
-        try {
-            test.SetH(29);
-        } catch (exception &ex) {
-            REQUIRE(strcmp(ex.what(), "Invalid hour") == 0);
-        }
-
-        try {
-            test.SetMinute(70);
-        } catch (exception &ex) {
-            REQUIRE(strcmp(ex.what(), "Invalid minute") == 0);
-        }
-
-        try {
-            test.SetSecond(77);
-        } catch (exception &ex) {
-            REQUIRE(strcmp(ex.what(), "Invalid second") == 0);
-        }
-
         Event test2(1, 1, 2008, 0, 0, 1);
         try {
             test2 = test - test2;
@@ -326,53 +211,24 @@ TEST_CASE("DateTime class tests 4", "[LAB4]") {
         REQUIRE(strcmp(f.GetStr(), e.GetStr()) == 0);
         REQUIRE(strcmp(f.GetTime(), e.GetTime()) == 0);
 
-        d.Plus('y');
-        REQUIRE(strcmp(d.GetStr(), "1/1/2008 0:0:0") == 0);
-        d.Plus('M');
-        REQUIRE(strcmp(d.GetStr(), "1/2/2008 0:0:0") == 0);
-        d.Plus('d');
-        REQUIRE(strcmp(d.GetStr(), "2/2/2008 0:0:0") == 0);
         d.Plus('h');
-        REQUIRE(strcmp(d.GetStr(), "2/2/2008 1:0:0") == 0);
+        REQUIRE(strcmp(d.GetStr(), "1/1/2007 1:0:0") == 0);
         REQUIRE(strcmp(d.GetTime(), "1:0:0 am") == 0);
-        d.Plus('m');
-        REQUIRE(strcmp(d.GetStr(), "2/2/2008 1:1:0") == 0);
-        REQUIRE(strcmp(d.GetTime(), "1:1:0 am") == 0);
         d.Plus('s');
-        REQUIRE(strcmp(d.GetStr(), "2/2/2008 1:1:1") == 0);
-        REQUIRE(strcmp(d.GetTime(), "1:1:1 am") == 0);
-
-        d.Minus('y');
-        REQUIRE(strcmp(d.GetStr(), "2/2/2007 1:1:1") == 0);
-        d.Minus('M');
-        REQUIRE(strcmp(d.GetStr(), "2/1/2007 1:1:1") == 0);
-        d.Minus('d');
-        REQUIRE(strcmp(d.GetStr(), "1/1/2007 1:1:1") == 0);
-        d.Minus('h');
-        REQUIRE(strcmp(d.GetStr(), "1/1/2007 0:1:1") == 0);
-        REQUIRE(strcmp(d.GetTime(), "12:1:1 am") == 0);
-        d.Minus('m');
-        REQUIRE(strcmp(d.GetStr(), "1/1/2007 0:0:1") == 0);
-        REQUIRE(strcmp(d.GetTime(), "12:0:1 am") == 0);
-        d.Minus('s');
-        REQUIRE(strcmp(d.GetStr(), "1/1/2007 0:0:0") == 0);
-        REQUIRE(strcmp(d.GetTime(), "12:0:0 am") == 0);
-
-        d.SetY(1984);
-        REQUIRE(strcmp(d.GetStr(), "1/1/1984 0:0:0") == 0);
-        d.SetMonth(3);
-        REQUIRE(strcmp(d.GetStr(), "1/3/1984 0:0:0") == 0);
-        d.SetDay(15);
-        REQUIRE(strcmp(d.GetStr(), "15/3/1984 0:0:0") == 0);
-        d.SetH(12);
-        REQUIRE(strcmp(d.GetStr(), "15/3/1984 12:0:0") == 0);
-        REQUIRE(strcmp(d.GetTime(), "12:0:0 pm") == 0);
+        REQUIRE(strcmp(d.GetStr(), "1/1/2007 1:0:1") == 0);
+        REQUIRE(strcmp(d.GetTime(), "1:0:1 am") == 0);
+        e.Minus('h');
+        REQUIRE(strcmp(e.GetStr(), "28/2/2020 22:5:14") == 0);
+        REQUIRE(strcmp(e.GetTime(), "10:5:14 pm") == 0);
+        e.Minus('m');
+        REQUIRE(strcmp(e.GetStr(), "28/2/2020 22:4:14") == 0);
+        REQUIRE(strcmp(e.GetTime(), "10:4:14 pm") == 0);
         d.SetMinute(30);
-        REQUIRE(strcmp(d.GetStr(), "15/3/1984 12:30:0") == 0);
-        REQUIRE(strcmp(d.GetTime(), "12:30:0 pm") == 0);
+        REQUIRE(strcmp(d.GetStr(), "1/1/2007 1:30:1") == 0);
+        REQUIRE(strcmp(d.GetTime(), "1:30:1 am") == 0);
         d.SetSecond(49);
-        REQUIRE(strcmp(d.GetStr(), "15/3/1984 12:30:49") == 0);
-        REQUIRE(strcmp(d.GetTime(), "12:30:49 pm") == 0);
+        REQUIRE(strcmp(d.GetStr(), "1/1/2007 1:30:49") == 0);
+        REQUIRE(strcmp(d.GetTime(), "1:30:49 am") == 0);
     }
     SECTION("TimeString operator tests") {
         TimeString q(22, 8, 1337, 7, 33, 1);
@@ -397,87 +253,8 @@ TEST_CASE("DateTime class tests 4", "[LAB4]") {
 
         REQUIRE(strcmp("12/5/669 18:30:3", (char *) t) == 0);
     }
-    SECTION("TimeString input/output tests") {
-        TimeString aa(15, 3, 1984, 12, 4, 13);
-        TimeString bb;
-
-        fstream file;
-        file.open("../text2.txt", fstream::out);
-        if (!file.is_open()) {
-            std::cerr << "File open error" << "\n";
-            exit(1);
-        }
-        file << aa << endl;
-        file.close();
-
-        file.open("../text2.txt", fstream::in);
-        if (!file.is_open()) {
-            std::cerr << "File open error" << "\n";
-            exit(1);
-        }
-        file >> bb;
-        REQUIRE(strcmp(aa.GetStr(), bb.GetStr()) == 0);
-        REQUIRE(strcmp(aa.GetTime(), bb.GetTime()) == 0);
-        file.close();
-
-        TimeString cc(20, 3, 1984, 12, 20, 20);
-        TimeString dd;
-
-        ofstream bin("..\\binText2.dat", ios::binary);
-        if (!bin.is_open()) {
-            cerr << "File open error";
-            exit(1);
-        }
-        BinIn(bin, cc);
-        bin.close();
-        ifstream bin2("..\\binText2.dat", ios::binary);
-        if (!bin2.is_open()) {
-            cerr << "File open error";
-            exit(1);
-        }
-        BinOut(bin2, dd);
-        bin2.close();
-        REQUIRE(strcmp(cc.GetStr(), dd.GetStr()) == 0);
-        REQUIRE(strcmp(cc.GetTime(), dd.GetTime()) == 0);
-    }
     SECTION("TimeString exception tests") {
         TimeString test1_0;
-        try {
-            test1_0.SetY(-1);
-        } catch (exception &ex) {
-            REQUIRE(strcmp(ex.what(), "Invalid year") == 0);
-        }
-
-        try {
-            test1_0.SetMonth(14);
-        } catch (exception &ex) {
-            REQUIRE(strcmp(ex.what(), "Invalid month") == 0);
-        }
-
-        try {
-            test1_0.SetDay(32);
-        } catch (exception &ex) {
-            REQUIRE(strcmp(ex.what(), "Invalid day") == 0);
-        }
-
-        try {
-            test1_0.SetH(29);
-        } catch (exception &ex) {
-            REQUIRE(strcmp(ex.what(), "Invalid hour") == 0);
-        }
-
-        try {
-            test1_0.SetMinute(70);
-        } catch (exception &ex) {
-            REQUIRE(strcmp(ex.what(), "Invalid minute") == 0);
-        }
-
-        try {
-            test1_0.SetSecond(77);
-        } catch (exception &ex) {
-            REQUIRE(strcmp(ex.what(), "Invalid second") == 0);
-        }
-
         TimeString test1_2(1, 1, 2008, 0, 0, 1);
         try {
             test1_2 = test1_0 - test1_2;
