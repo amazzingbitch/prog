@@ -7,46 +7,127 @@ Event::Event() : Date() { event = nullptr; eventName = nullptr; ToStringEvent();
 Event::Event(int day, int month, int year, int hour, int minute, int second) {
     if (CheckTime(hour, minute, second) && CheckData(day, month, year)) {
         Day = day, Month = month, Year = year; Hour = hour, Minute = minute, Second = second;
-        str = nullptr; eventName = nullptr; event = nullptr; ToString(); ToStringEvent();
+        str = nullptr; eventName = nullptr; event = nullptr; ToStringEvent();
     } else {
         Day = 1, Month = 1, Year = 2007, Hour = 0, Minute = 0, Second = 0;
-        str = nullptr; eventName = nullptr; event = nullptr; ToString(); ToStringEvent();
+        str = nullptr; eventName = nullptr; event = nullptr; ToStringEvent();
     }
 }
 Event::Event(int day, int month, int year, int hour, int minute, int second, const char* name) {
     if (CheckTime(hour, minute, second) && CheckData(day, month, year)) {
         Day = day, Month = month, Year = year; Hour = hour, Minute = minute, Second = second;
-        str = nullptr; eventName = (char*)name; event = nullptr; ToString(); ToStringEvent();
+        str = nullptr; eventName = (char*)name; event = nullptr; ToStringEvent();
     } else {
         Day = 1, Month = 1, Year = 2007, Hour = 0, Minute = 0, Second = 0;
-        str = nullptr; eventName = (char*)name; event = nullptr; ToString(); ToStringEvent();
+        str = nullptr; eventName = (char*)name; event = nullptr; ToStringEvent();
     }
 }
 Event::Event(Event &a) : Date (a) { eventName = a.eventName; event = nullptr; ToStringEvent(); }
 Event::Event(const Event &a) : Date (a) { eventName = a.eventName; event = nullptr; ToStringEvent(); }
 Event::~Event() { delete[]event; delete[]eventName; }
+void Event::ToString() {
+    int size[6], sum = 0;
+    int date[6] = { Day, Month, Year, Hour, Minute, Second };
+    for (int i = 0; i < 6; i++) {
+        size[i] = countCalc(date[i]);
+        sum += countCalc(date[i]);
+    }
+    delete[] str;
+    str = new char[sum + 6];
+    int move = 0;
+    for (int i = 0; i < 6; i++) {
+        sprintf(str + move, "%d", date[i]);
+        move += size[i];
+        if (i < 2) {
+            sprintf(str + move, "%c", '/');
+            move++;
+        }
+        else if (i == 2) {
+            sprintf(str + move, "%c", ' ');
+            move++;
+        }
+        else if (i < 5) {
+            sprintf(str + move, "%c", ':');
+            move++;
+        }
+    }
+    int size2[6], sum2 = 0;
+    int date2[6] = { Day, Month, Year, Hour, Minute, Second };
+    for (int i = 0; i < 6; i++) {
+        size2[i] = countCalc(date2[i]); sum2 += countCalc(date2[i]);
+    }
+    delete[] event; event = new char[sum2 + 26];
+    int move2 = 0;
+    for (int i = 0; i < 6; i++) {
+        sprintf(event + move2, "%d", date2[i]);
+        move2 += size2[i];
+        if (i < 2) {
+            sprintf(event + move2, "%c", '/');
+            move2++;
+        }
+        else if (i == 2) {
+            sprintf(event + move2, "%c", ' ');
+            move2++;
+        }
+        else if (i < 5) {
+            sprintf(event + move2, "%c", ':');
+            move2++;
+        }
+    }
+    if (eventName != nullptr) {
+        sprintf(event + strlen(str), "%c", ' '); int j = 0;
+        for (int i = (int)strlen(str) + 1; i < strlen(eventName) + strlen(str) + 2; i++) {
+            event[i] = eventName[j]; j++;
+        }
+    }
+}
 void Event::ToStringEvent() {
     int size[6], sum = 0;
     int date[6] = { Day, Month, Year, Hour, Minute, Second };
     for (int i = 0; i < 6; i++) {
-        size[i] = countCalc(date[i]); sum += countCalc(date[i]);
+        size[i] = countCalc(date[i]);
+        sum += countCalc(date[i]);
     }
-    delete[] event; event = new char[sum + 26];
+    delete[] str;
+    str = new char[sum + 6];
     int move = 0;
     for (int i = 0; i < 6; i++) {
-        sprintf(event + move, "%d", date[i]);
+        sprintf(str + move, "%d", date[i]);
         move += size[i];
         if (i < 2) {
-            sprintf(event + move, "%c", '/');
+            sprintf(str + move, "%c", '/');
             move++;
         }
         else if (i == 2) {
-            sprintf(event + move, "%c", ' ');
+            sprintf(str + move, "%c", ' ');
             move++;
         }
         else if (i < 5) {
-            sprintf(event + move, "%c", ':');
+            sprintf(str + move, "%c", ':');
             move++;
+        }
+    }
+    int size2[6], sum2 = 0;
+    int date2[6] = { Day, Month, Year, Hour, Minute, Second };
+    for (int i = 0; i < 6; i++) {
+        size2[i] = countCalc(date2[i]); sum2 += countCalc(date2[i]);
+    }
+    delete[] event; event = new char[sum2 + 26];
+    int move2 = 0;
+    for (int i = 0; i < 6; i++) {
+        sprintf(event + move2, "%d", date2[i]);
+        move2 += size2[i];
+        if (i < 2) {
+            sprintf(event + move2, "%c", '/');
+            move2++;
+        }
+        else if (i == 2) {
+            sprintf(event + move2, "%c", ' ');
+            move2++;
+        }
+        else if (i < 5) {
+            sprintf(event + move2, "%c", ':');
+            move2++;
         }
     }
     if (eventName != nullptr) {
@@ -61,137 +142,10 @@ void Event::SetEvent(const char* name) {
         throw invalid_argument("Invalid length of event name");
     } else {
         delete[]eventName; eventName = new char [strlen(name)+1];
-        strcpy(eventName, name); ToStringEvent();
+        strcpy(eventName, name); ToString();
     }
 }
 char* Event::GetEvent() { char* copy = new char [strlen(event)+1]; strcpy(copy, event); return copy; }
-void Event::SetDay(int day) {
-    if (CheckDay(day, Month, Year)) {
-        Day = day; ToString(); ToStringEvent();
-    } else {
-        throw invalid_argument("Invalid day");
-    }
-}
-void Event::SetMonth(int month) {
-    if (month > 0 && month < 13) {
-        Month = month; ToString(); ToStringEvent();
-    } else {
-        throw invalid_argument("Invalid month");
-    }
-}
-void Event::SetY(int year) {
-    if (year >= 0) {
-        Year = year; ToString(); ToStringEvent();
-    } else {
-        throw invalid_argument("Invalid year");
-    }
-}
-void Event::SetH(int hour) {
-    if (hour < 24 && hour >= 0) {
-        Hour = hour; ToString(); ToStringEvent();
-    } else {
-        throw invalid_argument("Invalid hour");
-    }
-}
-void Event::SetMinute(int minute) {
-    if (minute < 60 && minute >= 0) {
-        Minute = minute; ToString(); ToStringEvent();
-    } else {
-        throw invalid_argument("Invalid minute");
-    }
-}
-void Event::SetSecond(int second) {
-    if (second < 60 && second >= 0) {
-        Second = second; ToString(); ToStringEvent();
-    } else {
-        throw invalid_argument("Invalid second");
-    }
-}
-void Event::Plus(char k) {
-    switch (k) {
-        case 'y':
-            Year++;
-            break;
-        case 'M':
-            if (Month == 12) {
-                Year++;
-                Month = 1;
-            } else {
-                Month++;
-            }
-            break;
-        case 'd':
-            if (Day > 27)
-                DayPlus();
-            else
-                Day++;
-            break;
-        case 'h':
-            if (Hour == 23)
-                HourPlus();
-            else
-                Hour++;
-            break;
-        case 'm':
-            if (Minute == 59)
-                MinutePlus();
-            else
-                Minute++;
-            break;
-        case 's':
-            if (Second == 59)
-                SecondPlus();
-            else
-                Second++;
-            break;
-        default:
-            break;
-    }
-    ToString(); ToStringEvent();
-}
-void Event::Minus(char k) {
-    switch (k) {
-        case 'y':
-            if (Year != 0)
-                Year--;
-            break;
-        case 'M':
-            if (Month == 1) {
-                Year--;
-                Month = 12;
-            } else {
-                Month--;
-            }
-            break;
-        case 'd':
-            if (Day == 1)
-                DayMinus();
-            else
-                Day--;
-            break;
-        case 'h':
-            if (Hour == 0)
-                HourMinus();
-            else
-                Hour--;
-            break;
-        case 'm':
-            if (Minute == 0)
-                MinuteMinus();
-            else
-                Minute--;
-            break;
-        case 's':
-            if (Second == 0)
-                SecondMinus();
-            else
-                Second--;
-            break;
-        default:
-            break;
-    }
-    ToString(); ToStringEvent();
-}
 Event operator+(const Event &d1, const Event &d2) {
     Event temp; int month, day, hour, min, sec;
     temp.eventName = d1.eventName;
@@ -241,7 +195,6 @@ Event operator+(const Event &d1, const Event &d2) {
         }
     }
     temp.ToString();
-    temp.ToStringEvent();
     return temp;
 }
 Event &Event::operator=(const Event &a) {
@@ -296,46 +249,8 @@ Event operator-(const Event &d1, const Event &d2) {
     }
 
     temp.ToString();
-    temp.ToStringEvent();
 
     return temp;
-}
-ostream &operator<<(ostream &os, const Event &d) { os << d.event; return os; }
-istream &operator>>(istream &is, Event &d) {
-    is >> d.Day; is.ignore(256, '/');
-    is >> d.Month; is.ignore(256, '/');
-    is >> d.Year; is.ignore(256, ' ');
-    is >> d.Hour; is.ignore(256, ':');
-    is >> d.Minute; is.ignore(256, ':');
-    is >> d.Second;
-    is.ignore(256, ' ');
-    delete[]d.eventName;
-    d.eventName = new char[21];
-    is >> d.eventName;
-    d.ToString();
-    d.ToStringEvent();
-    return is;
-}
-ifstream& BinOut (ifstream& in, Event& p) {
-    in.read((char*)&p.Day, sizeof(int));
-    in.read((char*)&p.Month, sizeof(int));
-    in.read((char*)&p.Year, sizeof(int));
-    in.read((char*)&p.Hour, sizeof(int));
-    in.read((char*)&p.Minute, sizeof(int));
-    in.read((char*)&p.Second, sizeof(int));
-    in.read((char*)&p.eventName, sizeof(char*));
-    p.ToString(); p.ToStringEvent();
-    return in;
-}
-ofstream& BinIn (ofstream& os, Event& p) {
-    os.write((char*)&p.Day, sizeof(int));
-    os.write((char*)&p.Month, sizeof(int));
-    os.write((char*)&p.Year, sizeof(int));
-    os.write((char*)&p.Hour, sizeof(int));
-    os.write((char*)&p.Minute, sizeof(int));
-    os.write((char*)&p.Second, sizeof(int));
-    os.write((char*)&p.eventName, sizeof(char*));
-    return os;
 }
 Event operator+(const Event &d1, int hour) {
     Event temp(d1);

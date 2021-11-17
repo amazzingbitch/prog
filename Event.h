@@ -17,23 +17,12 @@ public:
     void ToStringEvent();
     void SetEvent(const char* name);
     char* GetEvent();
-    void SetDay(int day) override;
-    void SetMonth(int month) override;
-    void SetY(int year) override;
-    void SetH(int hour) override;
-    void SetMinute(int minute) override;
-    void SetSecond(int second) override;
-    void Plus(char k) override;
-    void Minus(char k) override;
+    void ToString() override;
     friend Event operator+(const Event &d1, const Event &d2);
     friend Event operator-(const Event &d1, const Event &d2);
     friend Event operator+(const Event &d1, int hour);
     friend Event operator-(const Event &d1, int hour);
     Event &operator=(const Event &right);
-    friend istream& operator >> (istream& os, Event& d);
-    friend ostream& operator << (ostream& os, const Event& d);
-    friend ifstream& BinOut (ifstream &is, Event &val);
-    friend ofstream& BinIn (ofstream &os, Event &val);
 
 protected:
     char* event; char* eventName;
