@@ -25,6 +25,8 @@ Event::Event(int day, int month, int year, int hour, int minute, int second, con
 Event::Event(Event &a) : Date (a) { eventName = a.eventName; event = nullptr; ToStringEvent(); }
 Event::Event(const Event &a) : Date (a) { eventName = a.eventName; event = nullptr; ToStringEvent(); }
 Event::~Event() { delete[]event; delete[]eventName; }
+char* Event::GetStr() { char* copy = new char [strlen(event)+1]; strcpy(copy, event); return copy;}
+char* Event::GetStrDate() { char* copy = new char [strlen(str)+1]; strcpy(copy, str); return copy;}
 void Event::ToString() {
     int size[6], sum = 0;
     int date[6] = { Day, Month, Year, Hour, Minute, Second };
@@ -145,7 +147,6 @@ void Event::SetEvent(const char* name) {
         strcpy(eventName, name); ToString();
     }
 }
-char* Event::GetEvent() { char* copy = new char [strlen(event)+1]; strcpy(copy, event); return copy; }
 Event operator+(const Event &d1, const Event &d2) {
     Event temp; int month, day, hour, min, sec;
     temp.eventName = d1.eventName;

@@ -35,7 +35,7 @@ public:
     void SecondMinus();
     static int countCalc(int num);
     virtual void ToString();
-    char* GetStr();
+    virtual char* GetStr();
     friend Date operator+(const Date &d1, const Date &d2);
     friend Date operator-(const Date &d1, const Date &d2);
     friend Date operator+(const Date &d1, int hour);

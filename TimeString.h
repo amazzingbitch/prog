@@ -15,7 +15,8 @@ public:
     TimeString(const TimeString &a);
     ~TimeString();
     void ToStringTime();
-    char* GetTime();
+    char* GetStrDate();
+    char* GetStr() override;
     void ToString() override;
     friend TimeString operator+(const TimeString &d1, const TimeString &d2);
     friend TimeString operator-(const TimeString &d1, const TimeString &d2);

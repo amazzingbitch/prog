@@ -124,7 +124,8 @@ void TimeString::ToString() {
         }
     }
 }
-char* TimeString::GetTime() { char* copy = new char [strlen(time)+1]; strcpy(copy, time); return copy; }
+char* TimeString::GetStr() { char* copy = new char [strlen(time)+1]; strcpy(copy, time); return copy; }
+char* TimeString::GetStrDate() { char* copy = new char [strlen(str)+1]; strcpy(copy, str); return copy; }
 TimeString operator+(const TimeString &d1, const TimeString &d2) {
     TimeString temp;
     int month, day, hour, min, sec;

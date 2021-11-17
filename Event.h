@@ -16,7 +16,8 @@ public:
     ~Event();
     void ToStringEvent();
     void SetEvent(const char* name);
-    char* GetEvent();
+    char* GetStrDate();
+    char* GetStr() override;
     void ToString() override;
     friend Event operator+(const Event &d1, const Event &d2);
     friend Event operator-(const Event &d1, const Event &d2);
