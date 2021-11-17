@@ -217,87 +217,8 @@ TEST_CASE("DateTime class tests 4", "[LAB4]") {
 
         REQUIRE(strcmp("12/5/669 18:30:3", (char *) h) == 0);
     }
-    SECTION("Event input/output tests") {
-        Event a1(15, 3, 1984, 12, 4, 13, "chill");
-        Event b1;
-
-        fstream file;
-        file.open("../text3.txt", fstream::out);
-        if (!file.is_open()) {
-            std::cerr << "File open error" << "\n";
-            exit(1);
-        }
-        file << a1 << endl;
-        file.close();
-
-        file.open("../text3.txt", fstream::in);
-        if (!file.is_open()) {
-            std::cerr << "File open error" << "\n";
-            exit(1);
-        }
-        file >> b1;
-        REQUIRE(strcmp(a1.GetStr(), b1.GetStr()) == 0);
-        REQUIRE(strcmp(a1.GetEvent(), b1.GetEvent()) == 0);
-        file.close();
-
-        Event c1(20, 3, 1984, 12, 20, 20, "concert");
-        Event d1;
-
-        ofstream bin("..\\binText3.dat", ios::binary);
-        if (!bin.is_open()) {
-            cerr << "File open error";
-            exit(1);
-        }
-        BinIn(bin, c1);
-        bin.close();
-        ifstream bin2("..\\binText3.dat", ios::binary);
-        if (!bin2.is_open()) {
-            cerr << "File open error";
-            exit(1);
-        }
-        BinOut(bin2, d1);
-        bin2.close();
-        REQUIRE(strcmp(c1.GetStr(), d1.GetStr()) == 0);
-        REQUIRE(strcmp(c1.GetEvent(), d1.GetEvent()) == 0);
-    }
     SECTION("Event class exception tests") {
         Event test;
-        try {
-            test.SetY(-1);
-        } catch (exception &ex) {
-            REQUIRE(strcmp(ex.what(), "Invalid year") == 0);
-        }
-
-        try {
-            test.SetMonth(14);
-        } catch (exception &ex) {
-            REQUIRE(strcmp(ex.what(), "Invalid month") == 0);
-        }
-
-        try {
-            test.SetDay(32);
-        } catch (exception &ex) {
-            REQUIRE(strcmp(ex.what(), "Invalid day") == 0);
-        }
-
-        try {
-            test.SetH(29);
-        } catch (exception &ex) {
-            REQUIRE(strcmp(ex.what(), "Invalid hour") == 0);
-        }
-
-        try {
-            test.SetMinute(70);
-        } catch (exception &ex) {
-            REQUIRE(strcmp(ex.what(), "Invalid minute") == 0);
-        }
-
-        try {
-            test.SetSecond(77);
-        } catch (exception &ex) {
-            REQUIRE(strcmp(ex.what(), "Invalid second") == 0);
-        }
-
         Event test2(1, 1, 2008, 0, 0, 1);
         try {
             test2 = test - test2;
@@ -402,87 +323,8 @@ TEST_CASE("DateTime class tests 4", "[LAB4]") {
 
         REQUIRE(strcmp("12/5/669 18:30:3", (char *) t) == 0);
     }
-    SECTION("TimeString input/output tests") {
-        TimeString aa(15, 3, 1984, 12, 4, 13);
-        TimeString bb;
-
-        fstream file;
-        file.open("../text2.txt", fstream::out);
-        if (!file.is_open()) {
-            std::cerr << "File open error" << "\n";
-            exit(1);
-        }
-        file << aa << endl;
-        file.close();
-
-        file.open("../text2.txt", fstream::in);
-        if (!file.is_open()) {
-            std::cerr << "File open error" << "\n";
-            exit(1);
-        }
-        file >> bb;
-        REQUIRE(strcmp(aa.GetStr(), bb.GetStr()) == 0);
-        REQUIRE(strcmp(aa.GetTime(), bb.GetTime()) == 0);
-        file.close();
-
-        TimeString cc(20, 3, 1984, 12, 20, 20);
-        TimeString dd;
-
-        ofstream bin("..\\binText2.dat", ios::binary);
-        if (!bin.is_open()) {
-            cerr << "File open error";
-            exit(1);
-        }
-        BinIn(bin, cc);
-        bin.close();
-        ifstream bin2("..\\binText2.dat", ios::binary);
-        if (!bin2.is_open()) {
-            cerr << "File open error";
-            exit(1);
-        }
-        BinOut(bin2, dd);
-        bin2.close();
-        REQUIRE(strcmp(cc.GetStr(), dd.GetStr()) == 0);
-        REQUIRE(strcmp(cc.GetTime(), dd.GetTime()) == 0);
-    }
     SECTION("TimeString exception tests") {
         TimeString test1_0;
-        try {
-            test1_0.SetY(-1);
-        } catch (exception &ex) {
-            REQUIRE(strcmp(ex.what(), "Invalid year") == 0);
-        }
-
-        try {
-            test1_0.SetMonth(14);
-        } catch (exception &ex) {
-            REQUIRE(strcmp(ex.what(), "Invalid month") == 0);
-        }
-
-        try {
-            test1_0.SetDay(32);
-        } catch (exception &ex) {
-            REQUIRE(strcmp(ex.what(), "Invalid day") == 0);
-        }
-
-        try {
-            test1_0.SetH(29);
-        } catch (exception &ex) {
-            REQUIRE(strcmp(ex.what(), "Invalid hour") == 0);
-        }
-
-        try {
-            test1_0.SetMinute(70);
-        } catch (exception &ex) {
-            REQUIRE(strcmp(ex.what(), "Invalid minute") == 0);
-        }
-
-        try {
-            test1_0.SetSecond(77);
-        } catch (exception &ex) {
-            REQUIRE(strcmp(ex.what(), "Invalid second") == 0);
-        }
-
         TimeString test1_2(1, 1, 2008, 0, 0, 1);
         try {
             test1_2 = test1_0 - test1_2;
@@ -640,5 +482,24 @@ TEST_CASE("DateTime class tests 8", "[LAB8]") {
             m.find(i);
         }
         cout << "Find : " << clock() - start << endl;
+    }
+    SECTION("STL: vector") {
+        cout << "Vector" << endl;
+        vector<int> v;
+        
+        /*map<int, int> m;
+        m.insert(make_pair(1, 1));
+        REQUIRE(m[1] == 1);
+        srand(time(nullptr));
+        int start = clock();
+        for (int i = 0; i < 10000; ++i) {
+            m.insert(make_pair(i, rand() % 10000));
+        }
+        cout << "Add : " << clock() - start << endl;
+        start = clock();
+        for (int i = 0; i < 10000; ++i) {
+            m.find(i);
+        }
+        cout << "Find : " << clock() - start << endl;*/
     }
 }
