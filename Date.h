@@ -28,7 +28,7 @@ public:
     void HourPlus();
     void MinutePlus();
     void SecondPlus();
-    virtual void Minus(char k);
+    void Minus(char k);
     void DayMinus();
     void HourMinus();
     void MinuteMinus();
