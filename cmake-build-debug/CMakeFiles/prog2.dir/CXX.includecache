@@ -15,6 +15,7 @@ fstream
 -
 
 C:/Users/casde/CLionProjects/prog2/Event.h
+<<<<<<< HEAD
 Date.h
 C:/Users/casde/CLionProjects/prog2/Date.h
 
@@ -28,6 +29,11 @@ C:/Users/casde/CLionProjects/prog2/Node.h
 Date.h
 C:/Users/casde/CLionProjects/prog2/Date.h
 
+=======
+Date.h
+C:/Users/casde/CLionProjects/prog2/Date.h
+
+>>>>>>> lab4
 C:/Users/casde/CLionProjects/prog2/TimeString.h
 Date.h
 C:/Users/casde/CLionProjects/prog2/Date.h

@@ -6,175 +6,125 @@
 TimeString::TimeString() : Date() { time = nullptr; ToStringTime(); }
 TimeString::TimeString(int day, int month, int year, int hour, int minute, int second) {
     if (CheckTime(hour, minute, second) && CheckData(day, month, year)) {
-        Day = day,  Month = month,  Year = year;
-        Hour = hour,  Minute = minute,  Second = second;
-        str = nullptr; time = nullptr; ToString(); ToStringTime();
+        Day = day,  Month = month,  Year = year; Hour = hour,  Minute = minute,  Second = second;
+        str = nullptr; time = nullptr; ToStringTime();
     } else {
-        Day = 1, Month = 1, Year = 2007,
-        Hour = 0, Minute = 0, Second = 0;
-        str = nullptr; time = nullptr; ToString(); ToStringTime();
+        Day = 1, Month = 1, Year = 2007, Hour = 0, Minute = 0, Second = 0;
+        str = nullptr; time = nullptr; ToStringTime();
     }
 }
 TimeString::TimeString(TimeString &a) : Date (a) { time = nullptr; ToStringTime(); }
 TimeString::TimeString(const TimeString &a) : Date (a) { time = nullptr; ToStringTime(); }
 TimeString::~TimeString() { delete[]time; }
 void TimeString::ToStringTime() {
-    int size[3], sum = 0;
-    int date[3] = { Hour, Minute, Second };
-    int move = 0, tt = 0;
+    int size[6], sum = 0;
+    int date[6] = { Day, Month, Year, Hour, Minute, Second };
+    for (int i = 0; i < 6; i++) {
+        size[i] = countCalc(date[i]);
+        sum += countCalc(date[i]);
+    }
+    delete[] str;
+    str = new char[sum + 6];
+    int move = 0;
+    for (int i = 0; i < 6; i++) {
+        sprintf(str + move, "%d", date[i]);
+        move += size[i];
+        if (i < 2) {
+            sprintf(str + move, "%c", '/');
+            move++;
+        }
+        else if (i == 2) {
+            sprintf(str + move, "%c", ' ');
+            move++;
+        }
+        else if (i < 5) {
+            sprintf(str + move, "%c", ':');
+            move++;
+        }
+    }
+    int size2[3], sum2 = 0;
+    int date2[3] = { Hour, Minute, Second };
+    int move2 = 0, tt = 0;
     if (Hour == 0 || Hour == 12) {
-        date[0] = 12;
+        date2[0] = 12;
         if (Hour == 12) {
             tt = 1;
         }
     } else if (Hour > 12) {
-        date[0] = Hour - 12; tt = 1;
+        date2[0] = Hour - 12; tt = 1;
     }
     for (int i = 0; i < 3; i++) {
-        size[i] = countCalc(date[i]);
-        sum += countCalc(date[i]);
+        size2[i] = countCalc(date2[i]);
+        sum2 += countCalc(date2[i]);
     }
     delete[] time; time = new char[sum + 6];
     for (int i = 0; i < 3; i++) {
-        sprintf(time + move, "%d", date[i]); move += size[i];
+        sprintf(time + move2, "%d", date2[i]); move2 += size2[i];
         if (i < 2) {
-            sprintf(time + move, "%c", ':'); move++;
+            sprintf(time + move2, "%c", ':'); move2++;
         }
         else {
-            sprintf(time + move, "%c", ' '); move++;
-            if (tt) sprintf(time + move, "%s", "pm");
-            else sprintf(time + move, "%s", "am");
+            sprintf(time + move2, "%c", ' '); move2++;
+            if (tt) sprintf(time + move2, "%s", "pm");
+            else sprintf(time + move2, "%s", "am");
+        }
+    }
+}
+void TimeString::ToString() {
+    int size[6], sum = 0;
+    int date[6] = { Day, Month, Year, Hour, Minute, Second };
+    for (int i = 0; i < 6; i++) {
+        size[i] = countCalc(date[i]);
+        sum += countCalc(date[i]);
+    }
+    delete[] str;
+    str = new char[sum + 6];
+    int move = 0;
+    for (int i = 0; i < 6; i++) {
+        sprintf(str + move, "%d", date[i]);
+        move += size[i];
+        if (i < 2) {
+            sprintf(str + move, "%c", '/');
+            move++;
+        }
+        else if (i == 2) {
+            sprintf(str + move, "%c", ' ');
+            move++;
+        }
+        else if (i < 5) {
+            sprintf(str + move, "%c", ':');
+            move++;
+        }
+    }
+    int size2[3], sum2 = 0;
+    int date2[3] = { Hour, Minute, Second };
+    int move2 = 0, tt = 0;
+    if (Hour == 0 || Hour == 12) {
+        date2[0] = 12;
+        if (Hour == 12) {
+            tt = 1;
+        }
+    } else if (Hour > 12) {
+        date2[0] = Hour - 12; tt = 1;
+    }
+    for (int i = 0; i < 3; i++) {
+        size2[i] = countCalc(date2[i]);
+        sum2 += countCalc(date2[i]);
+    }
+    delete[] time; time = new char[sum2 + 6];
+    for (int i = 0; i < 3; i++) {
+        sprintf(time + move2, "%d", date2[i]); move2 += size2[i];
+        if (i < 2) {
+            sprintf(time + move2, "%c", ':'); move2++;
+        }
+        else {
+            sprintf(time + move2, "%c", ' '); move2++;
+            if (tt) sprintf(time + move2, "%s", "pm");
+            else sprintf(time + move2, "%s", "am");
         }
     }
 }
 char* TimeString::GetTime() { char* copy = new char [strlen(time)+1]; strcpy(copy, time); return copy; }
-void TimeString::SetDay(int day) {
-    if (CheckDay(day, Month, Year)) {
-        Day = day; ToString(); ToStringTime();
-    } else {
-        throw invalid_argument("Invalid day");
-    }
-}
-void TimeString::SetMonth(int month) {
-    if (month > 0 && month < 13) {
-        Month = month; ToString(); ToStringTime();
-    } else {
-        throw invalid_argument("Invalid month");
-    }
-}
-void TimeString::SetY(int year) {
-    if (year >= 0) {
-        Year = year; ToString(); ToStringTime();
-    } else {
-        throw invalid_argument("Invalid year");
-    }
-}
-void TimeString::SetH(int hour) {
-    if (hour < 24 && hour >= 0) {
-        Hour = hour; ToString(); ToStringTime();
-    } else {
-        throw invalid_argument("Invalid hour");
-    }
-}
-void TimeString::SetMinute(int minute) {
-    if (minute < 60 && minute >= 0) {
-        Minute = minute; ToString(); ToStringTime();
-    } else {
-        throw invalid_argument("Invalid minute");
-    }
-}
-void TimeString::SetSecond(int second) {
-    if (second < 60 && second >= 0) {
-        Second = second; ToString(); ToStringTime();
-    } else {
-        throw invalid_argument("Invalid second");
-    }
-}
-void TimeString::Plus(char k) {
-    switch (k) {
-        case 'y':
-            Year++;
-            break;
-        case 'M':
-            if (Month == 12) {
-                Year++;
-                Month = 1;
-            } else {
-                Month++;
-            }
-            break;
-        case 'd':
-            if (Day > 27)
-                DayPlus();
-            else
-                Day++;
-            break;
-        case 'h':
-            if (Hour == 23)
-                HourPlus();
-            else
-                Hour++;
-            break;
-        case 'm':
-            if (Minute == 59)
-                MinutePlus();
-            else
-                Minute++;
-            break;
-        case 's':
-            if (Second == 59)
-                SecondPlus();
-            else
-                Second++;
-            break;
-        default:
-            break;
-    }
-    ToString(); ToStringTime();
-}
-void TimeString::Minus(char k) {
-    switch (k) {
-        case 'y':
-            if (Year != 0)
-                Year--;
-            break;
-        case 'M':
-            if (Month == 1) {
-                Year--;
-                Month = 12;
-            } else {
-                Month--;
-            }
-            break;
-        case 'd':
-            if (Day == 1)
-                DayMinus();
-            else
-                Day--;
-            break;
-        case 'h':
-            if (Hour == 0)
-                HourMinus();
-            else
-                Hour--;
-            break;
-        case 'm':
-            if (Minute == 0)
-                MinuteMinus();
-            else
-                Minute--;
-            break;
-        case 's':
-            if (Second == 0)
-                SecondMinus();
-            else
-                Second--;
-            break;
-        default:
-            break;
-    }
-    ToString(); ToStringTime();
-}
 TimeString operator+(const TimeString &d1, const TimeString &d2) {
     TimeString temp;
     int month, day, hour, min, sec;
@@ -268,35 +218,6 @@ TimeString operator-(const TimeString &d1, const TimeString &d2) {
         temp.Minus('s');
     }
     temp.ToString(); temp.ToStringTime(); return temp;
-}
-istream &operator>>(istream &is, TimeString &d) {
-    is >> d.Day; is.ignore(256, '/');
-    is >> d.Month; is.ignore(256, '/');
-    is >> d.Year; is.ignore(256, ' ');
-    is >> d.Hour; is.ignore(256, ':');
-    is >> d.Minute; is.ignore(256, ':');
-    is >> d.Second; d.ToString(); d.ToStringTime();
-    return is;
-}
-ostream &operator<<(ostream &os, const TimeString &d) { os << d.str; return os; }
-ifstream& BinOut (ifstream& in, TimeString& p) {
-    in.read((char*)&p.Day, sizeof(int));
-    in.read((char*)&p.Month, sizeof(int));
-    in.read((char*)&p.Year, sizeof(int));
-    in.read((char*)&p.Hour, sizeof(int));
-    in.read((char*)&p.Minute, sizeof(int));
-    in.read((char*)&p.Second, sizeof(int));
-    p.ToString(); p.ToStringTime();
-    return in;
-}
-ofstream& BinIn (ofstream& os, TimeString& p) {
-    os.write((char*)&p.Day, sizeof(int));
-    os.write((char*)&p.Month, sizeof(int));
-    os.write((char*)&p.Year, sizeof(int));
-    os.write((char*)&p.Hour, sizeof(int));
-    os.write((char*)&p.Minute, sizeof(int));
-    os.write((char*)&p.Second, sizeof(int));
-    return os;
 }
 TimeString operator+(const TimeString &d1, int hour) {
     TimeString temp(d1);
