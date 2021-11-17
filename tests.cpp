@@ -406,35 +406,35 @@ TEST_CASE("DateTime class tests 8", "[LAB8]") {
         map<int, int> m;
         m.insert(make_pair(1, 1));
         REQUIRE(m[1] == 1);
-        srand(time(nullptr));
-        int start = clock();
+        clock_t startTime = clock();
         for (int i = 0; i < 10000; ++i) {
             m.insert(make_pair(i, rand() % 10000));
         }
-        cout << "Add : " << clock() - start << endl;
-        start = clock();
+        cout << "Add : " << clock() - startTime << endl;
+        startTime = clock();
         for (int i = 0; i < 10000; ++i) {
             m.find(i);
         }
-        cout << "Find : " << clock() - start << endl;
+        cout << "Find : " << clock() - startTime << endl;
     }
     SECTION("STL: vector") {
         cout << "Vector" << endl;
-        vector<int> v;
-        
-        /*map<int, int> m;
-        m.insert(make_pair(1, 1));
-        REQUIRE(m[1] == 1);
-        srand(time(nullptr));
-        int start = clock();
+        vector<Date> v;
+        Date a;
+        v.resize(10000);
+        clock_t startTime = clock();
         for (int i = 0; i < 10000; ++i) {
-            m.insert(make_pair(i, rand() % 10000));
+            v.push_back(a);
         }
-        cout << "Add : " << clock() - start << endl;
-        start = clock();
-        for (int i = 0; i < 10000; ++i) {
-            m.find(i);
+        cout << "Add : " << clock() - startTime << endl;
+
+        startTime = clock();
+        for (int i = 0; i < 20000; ++i) {
+            v.pop_back();
         }
-        cout << "Find : " << clock() - start << endl;*/
+        cout << "Pop : " << clock() - startTime << endl;
+        startTime = clock();
+        v.clear();
+        cout << "Clear : " << clock() - startTime << endl;
     }
 }
