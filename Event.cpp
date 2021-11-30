@@ -22,9 +22,8 @@ Event::Event(int day, int month, int year, int hour, int minute, int second, con
         str = nullptr; eventName = (char*)name; event = nullptr; ToStringEvent();
     }
 }
-Event::Event(Event &a) : Date (a) { eventName = new char [strlen(a.eventName)+1];  strcpy(eventName, a.eventName); event = nullptr; ToStringEvent(); }
-Event::Event(const Event &a) : Date (a) { /*eventName = a.eventName;*/ eventName = new char [strlen(a.eventName)+1];  strcpy(eventName, a.eventName);
-    event = nullptr; ToStringEvent(); }
+Event::Event(Event &a) : Date (a) { eventName = a.eventName; event = nullptr; ToStringEvent(); }
+Event::Event(const Event &a) : Date (a) { eventName = a.eventName; event = nullptr; ToStringEvent(); }
 Event::~Event() { delete[]event; delete[]eventName; }
 char* Event::GetStr() { char* copy = new char [strlen(event)+1]; strcpy(copy, event); return copy;}
 char* Event::GetStrDate() { char* copy = new char [strlen(str)+1]; strcpy(copy, str); return copy;}
