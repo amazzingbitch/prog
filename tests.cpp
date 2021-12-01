@@ -336,6 +336,8 @@ TEST_CASE("DateTime class tests 7", "[LAB7]") {
         REQUIRE(q1[1] == 1);
         REQUIRE(q1[2] == 5);
 
+        REQUIRE(q1.minInt(q1[0], q1[2]) == 4);
+
         q1.Pop();
         REQUIRE(q1[0] == 1);
     }
@@ -352,25 +354,11 @@ TEST_CASE("DateTime class tests 7", "[LAB7]") {
         REQUIRE(q2[1] == 8.4f);
         REQUIRE(q2[2] == 6.6f);
 
+        REQUIRE(q2.sumFloat(q2[0], q2[2]) == 9.4f);
+
         q2.Pop();
         REQUIRE(q2[0] == 8.4f);
     }
-
-    /*SECTION("Templates <char>") {
-        List <char> q3;
-        char n1 = 'c', n2 = 'b', n3 = 't';
-
-        q3.Push(n1);
-        q3.Push(n2);
-        q3.Push(n3);
-
-        REQUIRE(q3[0] == 't');
-        REQUIRE(q3[1] == 'b');
-        REQUIRE(q3[2] == 'c');
-
-        q3.Pop();
-        REQUIRE(q3[0] == 'b');
-    }*/
 }
 TEST_CASE("DateTime class tests 8", "[LAB8]") {
     SECTION("STL: map") {
