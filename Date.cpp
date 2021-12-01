@@ -63,7 +63,7 @@ int Date::countCalc(int num) {
     }
     return len;
 }
-char* Date::GetStr() { // геттер строки
+char* Date::GetStr() {
     char* copy = new char [strlen(str)+1]; strcpy(copy, str); return copy;
 }
 void Date::SetDay(int day) {
