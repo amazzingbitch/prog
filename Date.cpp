@@ -5,56 +5,29 @@
 
 Date::Date() {
     Day = 1, Month = 1, Year = 2007,
-    Hour = 0, Minute = 0, Second = 0; str = nullptr; ToStringK();
+    Hour = 0, Minute = 0, Second = 0; str = nullptr; ToString();
 }
 Date::Date(int day, int month, int year, int hour, int minute, int second) {
     if (CheckTime(hour, minute, second) && CheckData(day, month, year)) {
         Day = day,  Month = month,  Year = year;
         Hour = hour,  Minute = minute,  Second = second;
-        str = nullptr; ToStringK();
+        str = nullptr; ToString();
     } else {
         Day = 1, Month = 1, Year = 2007, Hour = 0, Minute = 0, Second = 0;
-        str = nullptr; ToStringK();
+        str = nullptr; ToString();
     }
 }
 Date::Date(Date &a) {
     Day = a.Day,  Month = a.Month,  Year = a.Year;
     Hour = a.Hour,  Minute = a.Minute,  Second = a.Second;
-    str = nullptr; ToStringK();
+    str = nullptr; ToString();
 }
 Date::Date(const Date &a) {
     Day = a.Day, Month = a.Month, Year = a.Year;
     Hour = a.Hour, Minute = a.Minute, Second = a.Second;
-    str = nullptr; ToStringK();
+    str = nullptr; ToString();
 }
 Date::~Date() { delete[]str; }
-void Date::ToStringK() {
-    int size[6], sum = 0;
-    int date[6] = { Day, Month, Year, Hour, Minute, Second };
-    for (int i = 0; i < 6; i++) {
-        size[i] = countCalc(date[i]);
-        sum += countCalc(date[i]);
-    }
-    delete[] str;
-    str = new char[sum + 6];
-    int move = 0;
-    for (int i = 0; i < 6; i++) {
-        sprintf(str + move, "%d", date[i]);
-        move += size[i];
-        if (i < 2) {
-            sprintf(str + move, "%c", '/');
-            move++;
-        }
-        else if (i == 2) {
-            sprintf(str + move, "%c", ' ');
-            move++;
-        }
-        else if (i < 5) {
-            sprintf(str + move, "%c", ':');
-            move++;
-        }
-    }
-}
 void Date::ToString() {
     int size[6], sum = 0;
     int date[6] = { Day, Month, Year, Hour, Minute, Second };
@@ -408,8 +381,8 @@ Date &Date::operator=(const Date &a) {
     if (this == &a) {
         return *this;
     }
-     Day = a.Day,  Month = a.Month,  Year = a.Year;
-     Hour = a.Hour,  Minute = a.Minute,  Second = a.Second;
+    Day = a.Day,  Month = a.Month,  Year = a.Year;
+    Hour = a.Hour,  Minute = a.Minute,  Second = a.Second;
     ToString();
     return *this;
 }

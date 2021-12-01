@@ -42,6 +42,11 @@ public:
         }
         return tmp->t;
     }
+    ~List() {
+        while (!IsEmpty()) {
+            Pop();
+        }
+    }
 
 private:
     node<T> *top;

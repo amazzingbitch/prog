@@ -356,7 +356,7 @@ TEST_CASE("DateTime class tests 7", "[LAB7]") {
         REQUIRE(q2[0] == 8.4f);
     }
 
-    SECTION("Templates <char>") {
+    /*SECTION("Templates <char>") {
         List <char> q3;
         char n1 = 'c', n2 = 'b', n3 = 't';
 
@@ -370,7 +370,7 @@ TEST_CASE("DateTime class tests 7", "[LAB7]") {
 
         q3.Pop();
         REQUIRE(q3[0] == 'b');
-    }
+    }*/
 }
 TEST_CASE("DateTime class tests 8", "[LAB8]") {
     SECTION("STL: map") {
