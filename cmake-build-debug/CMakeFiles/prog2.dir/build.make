@@ -52,10 +52,10 @@ RM = "D:\CLion 2021.1.2\bin\cmake\win\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\casde\CLionProjects\prog2
+CMAKE_SOURCE_DIR = C:\Users\casde\CLionProjects\prog
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\casde\CLionProjects\prog2\cmake-build-debug
+CMAKE_BINARY_DIR = C:\Users\casde\CLionProjects\prog\cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/prog2.dir/depend.make
@@ -67,68 +67,68 @@ include CMakeFiles/prog2.dir/flags.make
 
 CMakeFiles/prog2.dir/main.cpp.obj: CMakeFiles/prog2.dir/flags.make
 CMakeFiles/prog2.dir/main.cpp.obj: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\casde\CLionProjects\prog2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/prog2.dir/main.cpp.obj"
-	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\prog2.dir\main.cpp.obj -c C:\Users\casde\CLionProjects\prog2\main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\casde\CLionProjects\prog\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/prog2.dir/main.cpp.obj"
+	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\prog2.dir\main.cpp.obj -c C:\Users\casde\CLionProjects\prog\main.cpp
 
 CMakeFiles/prog2.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/prog2.dir/main.cpp.i"
-	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\casde\CLionProjects\prog2\main.cpp > CMakeFiles\prog2.dir\main.cpp.i
+	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\casde\CLionProjects\prog\main.cpp > CMakeFiles\prog2.dir\main.cpp.i
 
 CMakeFiles/prog2.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/prog2.dir/main.cpp.s"
-	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\casde\CLionProjects\prog2\main.cpp -o CMakeFiles\prog2.dir\main.cpp.s
+	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\casde\CLionProjects\prog\main.cpp -o CMakeFiles\prog2.dir\main.cpp.s
 
 CMakeFiles/prog2.dir/Date.cpp.obj: CMakeFiles/prog2.dir/flags.make
 CMakeFiles/prog2.dir/Date.cpp.obj: ../Date.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\casde\CLionProjects\prog2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/prog2.dir/Date.cpp.obj"
-	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\prog2.dir\Date.cpp.obj -c C:\Users\casde\CLionProjects\prog2\Date.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\casde\CLionProjects\prog\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/prog2.dir/Date.cpp.obj"
+	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\prog2.dir\Date.cpp.obj -c C:\Users\casde\CLionProjects\prog\Date.cpp
 
 CMakeFiles/prog2.dir/Date.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/prog2.dir/Date.cpp.i"
-	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\casde\CLionProjects\prog2\Date.cpp > CMakeFiles\prog2.dir\Date.cpp.i
+	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\casde\CLionProjects\prog\Date.cpp > CMakeFiles\prog2.dir\Date.cpp.i
 
 CMakeFiles/prog2.dir/Date.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/prog2.dir/Date.cpp.s"
-	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\casde\CLionProjects\prog2\Date.cpp -o CMakeFiles\prog2.dir\Date.cpp.s
+	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\casde\CLionProjects\prog\Date.cpp -o CMakeFiles\prog2.dir\Date.cpp.s
 
 CMakeFiles/prog2.dir/tests.cpp.obj: CMakeFiles/prog2.dir/flags.make
 CMakeFiles/prog2.dir/tests.cpp.obj: ../tests.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\casde\CLionProjects\prog2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/prog2.dir/tests.cpp.obj"
-	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\prog2.dir\tests.cpp.obj -c C:\Users\casde\CLionProjects\prog2\tests.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\casde\CLionProjects\prog\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/prog2.dir/tests.cpp.obj"
+	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\prog2.dir\tests.cpp.obj -c C:\Users\casde\CLionProjects\prog\tests.cpp
 
 CMakeFiles/prog2.dir/tests.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/prog2.dir/tests.cpp.i"
-	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\casde\CLionProjects\prog2\tests.cpp > CMakeFiles\prog2.dir\tests.cpp.i
+	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\casde\CLionProjects\prog\tests.cpp > CMakeFiles\prog2.dir\tests.cpp.i
 
 CMakeFiles/prog2.dir/tests.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/prog2.dir/tests.cpp.s"
-	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\casde\CLionProjects\prog2\tests.cpp -o CMakeFiles\prog2.dir\tests.cpp.s
+	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\casde\CLionProjects\prog\tests.cpp -o CMakeFiles\prog2.dir\tests.cpp.s
 
 CMakeFiles/prog2.dir/Event.cpp.obj: CMakeFiles/prog2.dir/flags.make
 CMakeFiles/prog2.dir/Event.cpp.obj: ../Event.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\casde\CLionProjects\prog2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/prog2.dir/Event.cpp.obj"
-	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\prog2.dir\Event.cpp.obj -c C:\Users\casde\CLionProjects\prog2\Event.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\casde\CLionProjects\prog\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/prog2.dir/Event.cpp.obj"
+	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\prog2.dir\Event.cpp.obj -c C:\Users\casde\CLionProjects\prog\Event.cpp
 
 CMakeFiles/prog2.dir/Event.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/prog2.dir/Event.cpp.i"
-	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\casde\CLionProjects\prog2\Event.cpp > CMakeFiles\prog2.dir\Event.cpp.i
+	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\casde\CLionProjects\prog\Event.cpp > CMakeFiles\prog2.dir\Event.cpp.i
 
 CMakeFiles/prog2.dir/Event.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/prog2.dir/Event.cpp.s"
-	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\casde\CLionProjects\prog2\Event.cpp -o CMakeFiles\prog2.dir\Event.cpp.s
+	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\casde\CLionProjects\prog\Event.cpp -o CMakeFiles\prog2.dir\Event.cpp.s
 
 CMakeFiles/prog2.dir/TimeString.cpp.obj: CMakeFiles/prog2.dir/flags.make
 CMakeFiles/prog2.dir/TimeString.cpp.obj: ../TimeString.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\casde\CLionProjects\prog2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/prog2.dir/TimeString.cpp.obj"
-	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\prog2.dir\TimeString.cpp.obj -c C:\Users\casde\CLionProjects\prog2\TimeString.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\casde\CLionProjects\prog\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/prog2.dir/TimeString.cpp.obj"
+	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\prog2.dir\TimeString.cpp.obj -c C:\Users\casde\CLionProjects\prog\TimeString.cpp
 
 CMakeFiles/prog2.dir/TimeString.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/prog2.dir/TimeString.cpp.i"
-	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\casde\CLionProjects\prog2\TimeString.cpp > CMakeFiles\prog2.dir\TimeString.cpp.i
+	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\casde\CLionProjects\prog\TimeString.cpp > CMakeFiles\prog2.dir\TimeString.cpp.i
 
 CMakeFiles/prog2.dir/TimeString.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/prog2.dir/TimeString.cpp.s"
-	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\casde\CLionProjects\prog2\TimeString.cpp -o CMakeFiles\prog2.dir\TimeString.cpp.s
+	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\casde\CLionProjects\prog\TimeString.cpp -o CMakeFiles\prog2.dir\TimeString.cpp.s
 
 # Object files for target prog2
 prog2_OBJECTS = \
@@ -150,7 +150,7 @@ prog2.exe: CMakeFiles/prog2.dir/build.make
 prog2.exe: CMakeFiles/prog2.dir/linklibs.rsp
 prog2.exe: CMakeFiles/prog2.dir/objects1.rsp
 prog2.exe: CMakeFiles/prog2.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\casde\CLionProjects\prog2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable prog2.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\casde\CLionProjects\prog\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable prog2.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\prog2.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -162,6 +162,6 @@ CMakeFiles/prog2.dir/clean:
 .PHONY : CMakeFiles/prog2.dir/clean
 
 CMakeFiles/prog2.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\casde\CLionProjects\prog2 C:\Users\casde\CLionProjects\prog2 C:\Users\casde\CLionProjects\prog2\cmake-build-debug C:\Users\casde\CLionProjects\prog2\cmake-build-debug C:\Users\casde\CLionProjects\prog2\cmake-build-debug\CMakeFiles\prog2.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\casde\CLionProjects\prog C:\Users\casde\CLionProjects\prog C:\Users\casde\CLionProjects\prog\cmake-build-debug C:\Users\casde\CLionProjects\prog\cmake-build-debug C:\Users\casde\CLionProjects\prog\cmake-build-debug\CMakeFiles\prog2.dir\DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/prog2.dir/depend
 

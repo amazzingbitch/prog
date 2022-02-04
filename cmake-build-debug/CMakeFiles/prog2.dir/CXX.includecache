@@ -6,7 +6,11 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/casde/CLionProjects/prog2/Date.h
+C:/Users/casde/CLionProjects/prog/Date.cpp
+Date.h
+C:/Users/casde/CLionProjects/prog/Date.h
+
+C:/Users/casde/CLionProjects/prog/Date.h
 iostream
 -
 cstring
@@ -14,25 +18,33 @@ cstring
 fstream
 -
 
-C:/Users/casde/CLionProjects/prog2/Event.h
-Date.h
-C:/Users/casde/CLionProjects/prog2/Date.h
+C:/Users/casde/CLionProjects/prog/Event.cpp
+Event.h
+C:/Users/casde/CLionProjects/prog/Event.h
 
-C:/Users/casde/CLionProjects/prog2/List.h
+C:/Users/casde/CLionProjects/prog/Event.h
+Date.h
+C:/Users/casde/CLionProjects/prog/Date.h
+
+C:/Users/casde/CLionProjects/prog/List.h
 Node.h
-C:/Users/casde/CLionProjects/prog2/Node.h
+C:/Users/casde/CLionProjects/prog/Node.h
 Date.h
-C:/Users/casde/CLionProjects/prog2/Date.h
+C:/Users/casde/CLionProjects/prog/Date.h
 
-C:/Users/casde/CLionProjects/prog2/Node.h
+C:/Users/casde/CLionProjects/prog/Node.h
 Date.h
-C:/Users/casde/CLionProjects/prog2/Date.h
+C:/Users/casde/CLionProjects/prog/Date.h
 
-C:/Users/casde/CLionProjects/prog2/TimeString.h
+C:/Users/casde/CLionProjects/prog/TimeString.cpp
+TimeString.h
+C:/Users/casde/CLionProjects/prog/TimeString.h
+
+C:/Users/casde/CLionProjects/prog/TimeString.h
 Date.h
-C:/Users/casde/CLionProjects/prog2/Date.h
+C:/Users/casde/CLionProjects/prog/Date.h
 
-C:/Users/casde/CLionProjects/prog2/catch.hpp
+C:/Users/casde/CLionProjects/prog/catch.hpp
 TargetConditionals.h
 -
 cstddef
@@ -414,7 +426,7 @@ string
 memory
 -
 Foundation/Foundation.h
-C:/Users/casde/CLionProjects/prog2/Foundation/Foundation.h
+C:/Users/casde/CLionProjects/prog/Foundation/Foundation.h
 algorithm
 -
 signal.h
@@ -626,17 +638,21 @@ iomanip
 cassert
 -
 
-C:/Users/casde/CLionProjects/prog2/tests.cpp
+C:/Users/casde/CLionProjects/prog/main.cpp
 catch.hpp
-C:/Users/casde/CLionProjects/prog2/catch.hpp
+C:/Users/casde/CLionProjects/prog/catch.hpp
+
+C:/Users/casde/CLionProjects/prog/tests.cpp
+catch.hpp
+C:/Users/casde/CLionProjects/prog/catch.hpp
 Date.h
-C:/Users/casde/CLionProjects/prog2/Date.h
+C:/Users/casde/CLionProjects/prog/Date.h
 Event.h
-C:/Users/casde/CLionProjects/prog2/Event.h
+C:/Users/casde/CLionProjects/prog/Event.h
 TimeString.h
-C:/Users/casde/CLionProjects/prog2/TimeString.h
+C:/Users/casde/CLionProjects/prog/TimeString.h
 List.h
-C:/Users/casde/CLionProjects/prog2/List.h
+C:/Users/casde/CLionProjects/prog/List.h
 map
 -
 vector

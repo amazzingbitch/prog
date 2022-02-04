@@ -2,7 +2,13 @@
 // Created by casde on 01.11.2021.
 //
 #include "Event.h"
-
+bool operator < (const Event& val1, const Event& val2) {
+    if (val1.Year < val2.Year)
+        return(val1.Year < val2.Year);
+    else if (val1.Month < val2.Month)
+        return(val1.Month < val2.Month); else if (val1.Day < val2.Day)
+        return(val1.Day < val2.Day);
+}
 Event::Event() : Date() { event = nullptr; eventName = nullptr; ToStringEvent(); }
 Event::Event(int day, int month, int year, int hour, int minute, int second) {
     if (CheckTime(hour, minute, second) && CheckData(day, month, year)) {

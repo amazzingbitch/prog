@@ -40,6 +40,7 @@ public:
     friend Event operator-(const Event &d1, int hour);
     // оператор присваивания
     Event &operator=(const Event &right);
+    friend bool operator < (const Event& val1, const Event& val2);
 
 protected:
     // поле строкового представления даты, времени и названия мероприятия

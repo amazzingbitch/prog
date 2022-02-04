@@ -363,30 +363,28 @@ TEST_CASE("DateTime class tests 7", "[LAB7]") {
 TEST_CASE("DateTime class tests 8", "[LAB8]") {
     SECTION("STL: map") {
         cout << "Map" << endl;
-        map<string, string> m;
-        Event j(28, 02, 2020, 15, 0, 0, "chill");
-        Event s(1, 02, 2020, 15, 0, 0, "flex");
+        map<Event, string> m;
+        Event j(28, 2, 2020, 15, 0, 0);
+        Event r(1, 3, 2021, 18, 30, 0);
         clock_t startTime = clock();
         for (int i = 0; i < 5000; ++i) {
-            m.emplace(j.GetStrDate(), j.GetStr());
-            m.emplace(s.GetStrDate(), s.GetStr());
+            m.emplace(j, "flex");
+            m.emplace(r, "party");
         }
-        cout << "Add Date: " << clock() - startTime << endl;
+        cout << "Add Event: " << clock() - startTime << endl;
         startTime = clock();
         for (int i = 0; i < 10000; ++i) {
-            m.find(j.GetStr());
+            m.find(j);
         }
-        cout << "Find Date: " << clock() - startTime << endl;
-
+        cout << "Find Event: " << clock() - startTime << endl;
         map<int, int> x;
         x.emplace(1, 1);
         REQUIRE(x[1] == 1);
         clock_t startTime2 = clock();
         for (int i = 0; i < 10000; ++i) {
-            x.emplace(1, rand() % 10000);
-            //if (i % 1000 == 0) cout << x[i] << endl;
+            x.insert(make_pair(1, rand() % 10000));
         }
-        cout << "Add  int: " << clock() - startTime2 << endl;
+        cout << "Add int: " << clock() - startTime2 << endl;
         startTime2 = clock();
         for (int i = 0; i < 10000; ++i) {
             x.find(i);
@@ -395,24 +393,22 @@ TEST_CASE("DateTime class tests 8", "[LAB8]") {
     }
     SECTION("STL: vector") {
         cout << "Vector" << endl;
-        vector<Date> v;
-        Date a;
+        vector<Event> v;
+        Event a(28, 2, 2020, 15, 0, 0);;
         v.resize(10000);
         clock_t startTime = clock();
         for (int i = 0; i < 10000; ++i) {
             v.push_back(a);
         }
-        cout << "Add Date: " << clock() - startTime << endl;
-
+        cout << "Add Event: " << clock() - startTime << endl;
         startTime = clock();
         for (int i = 0; i < 10000; ++i) {
             v.pop_back();
         }
-        cout << "Pop Date: " << clock() - startTime << endl;
+        cout << "Pop Event: " << clock() - startTime << endl;
         startTime = clock();
         v.clear();
-        cout << "Clear Date: " << clock() - startTime << endl;
-
+        cout << "Clear Event: " << clock() - startTime << endl;
         vector<int> w;
         w.resize(10000);
         clock_t startTime3 = clock();
@@ -421,7 +417,6 @@ TEST_CASE("DateTime class tests 8", "[LAB8]") {
             w.push_back(k);
         }
         cout << "Add int: " << clock() - startTime3 << endl;
-
         startTime3 = clock();
         for (int i = 0; i < 10000; ++i) {
             w.pop_back();
