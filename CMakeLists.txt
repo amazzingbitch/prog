@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.19)
-project(prog2)
+project(prog)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(prog2 main.cpp Date.cpp Date.h tests.cpp)
+add_executable(prog main.cpp Date.cpp Date.h tests.cpp)

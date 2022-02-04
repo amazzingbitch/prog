@@ -26,9 +26,11 @@ void Date::ToString() {
     int size[6], sum = 0;
     int date[6] = { Day, Month, Year, Hour, Minute, Second };
     for (int i = 0; i < 6; i++) {
-        size[i] = countCalc(date[i]); sum += countCalc(date[i]);
+        size[i] = countCalc(date[i]);
+        sum += countCalc(date[i]);
     }
-    delete[] str; str = new char[sum + 6 /* 7 */];
+    delete[] str;
+    str = new char[sum + 6];
     int move = 0;
     for (int i = 0; i < 6; i++) {
         sprintf(str + move, "%d", date[i]);
@@ -45,23 +47,18 @@ void Date::ToString() {
             sprintf(str + move, "%c", ':');
             move++;
         }
-        /*if (i == 5) {
-            sprintf(str + move, "%c", '\0');
-        }*/
     }
 }
 int Date::countCalc(int num) {
-    int len = 0;
-    if (num == 0) return 1;
+    int len = 0; if (num == 0) return 1;
     while (num > 0) {
         len++;
         num = num / 10;
     }
     return len;
 }
-char* Date::GetStr() {
-    char* copy = new char [strlen(str)];
-    strcpy(copy, str); return copy;
+char* Date::GetStr() { // геттер строки
+    char* copy = new char [strlen(str)+1]; strcpy(copy, str); return copy;
 }
 void Date::SetDay(int day) {
     if (CheckDay(day, Month, Year)) {

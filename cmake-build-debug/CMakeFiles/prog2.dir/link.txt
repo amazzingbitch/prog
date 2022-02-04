@@ -1,3 +1,0 @@
-"D:\CLion 2021.1.2\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\prog2.dir/objects.a
-D:\MinGW\bin\ar.exe cr CMakeFiles\prog2.dir/objects.a @CMakeFiles\prog2.dir\objects1.rsp
-D:\MinGW\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\prog2.dir/objects.a -Wl,--no-whole-archive -o prog2.exe -Wl,--out-implib,libprog2.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\prog2.dir\linklibs.rsp
