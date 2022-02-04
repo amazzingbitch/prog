@@ -36,8 +36,8 @@ void Date::ToString() {
         size[i] = countCalc(date[i]);
         sum += countCalc(date[i]);
     }
-    delete[] this->str;
-    this->str = new char[sum + 7];
+    delete[] str;
+    str = new char[sum + 6];
     int move = 0;
     for (int i = 0; i < 6; i++) {
         sprintf(str + move, "%d", date[i]);
@@ -54,15 +54,10 @@ void Date::ToString() {
             sprintf(str + move, "%c", ':');
             move++;
         }
-        if (i == 5) {
-            sprintf(str + move, "%c", '\0');
-        }
     }
-    this->sizeStr = sum + 7;
 }
 int Date::countCalc(int num) {
-    int len = 0;
-    if (num == 0) return 1;
+    int len = 0; if (num == 0) return 1;
     while (num > 0) {
         len++;
         num = num / 10;
@@ -70,8 +65,7 @@ int Date::countCalc(int num) {
     return len;
 }
 char* Date::GetStr() { // геттер строки
-    char* copy = new char[sizeStr];
-    strcpy(copy, str); return copy;
+    char* copy = new char [strlen(str)+1]; strcpy(copy, str); return copy;
 }
 void Date::SetDay(int day) {
     this-> Day = day;
